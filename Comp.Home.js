@@ -3,6 +3,7 @@
 var React = require('react-native');
 var DEFCSS = require('./Styles.Default');
 var Toolbar = require('./UI.Toolbar');
+var PinkHeader = require('./Comp.PinkHeaders');
 var Dimensions = require('Dimensions');
 var windowSize = Dimensions.get('window');
 
@@ -34,7 +35,6 @@ var styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     top: 0,
-    flex: 1,
     backgroundColor: 'transparent',
     width: windowSize.width,
     height: windowSize.height
@@ -60,10 +60,7 @@ var cakesplaza = React.createClass({
         <Image style={styles.logo} source={require('image!logo')} />
         <ScrollView contentContainerStyle={styles.scrollContainer} style={[ DEFCSS.contentContainer, styles.contentScroller ]}>
           <View style={DEFCSS.bgSpacer} />
-          <View style={DEFCSS.pinkHeaderWrapper}>
-            <Text style={[DEFCSS.pinkHeaderTitle, DEFCSS.sansc]}>BEGIN HIER</Text>
-            <Text style={[DEFCSS.pinkHeaderSubTitle, DEFCSS.sans]}>start met ervaren</Text>
-          </View>
+          <PinkHeader title={'BEGIN HIER'} subTitle={'start met ervaren'} />
         </ScrollView>
         <Toolbar/>
       </View>

@@ -37,22 +37,6 @@ module.exports = StyleSheet.create({
     flex: 1,
     height: windowSize.height - 120
   },
-  pinkHeaderWrapper: {
-    backgroundColor: colors.lightPink,
-    height: 100,
-    flexDirection: 'column'
-  },
-  pinkHeaderTitle: {
-    fontSize: 40,
-    color: colors.darkBrown,
-    flex: 0.5,
-    padding: 10
-  },
-  pinkHeaderSubTitle: {
-    flex: 0.5,
-    color: colors.darkBrown,
-    paddingLeft: 10
-  },
   whiteColor: {
     color: colors.white
   },
@@ -67,6 +51,11 @@ module.exports = StyleSheet.create({
     margin: 0
   },
   sansc: {
-    fontFamily: 'OpenSans-CondensedLight'
+    fontFamily: 'OpenSans-CondensedLight',
+    color: colors.darkBrown
+  },
+  sans: {
+    fontFamily: 'OpenSans-Light',
+    color: colors.darkBrown
   }
 });
