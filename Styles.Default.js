@@ -39,7 +39,19 @@ module.exports = StyleSheet.create({
   },
   pinkHeaderWrapper: {
     backgroundColor: colors.lightPink,
-    height: 100
+    height: 100,
+    flexDirection: 'column'
+  },
+  pinkHeaderTitle: {
+    fontSize: 40,
+    color: colors.darkBrown,
+    flex: 0.5,
+    padding: 10
+  },
+  pinkHeaderSubTitle: {
+    flex: 0.5,
+    color: colors.darkBrown,
+    paddingLeft: 10
   },
   whiteColor: {
     color: colors.white

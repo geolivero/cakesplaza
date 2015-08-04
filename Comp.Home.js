@@ -61,6 +61,8 @@ var cakesplaza = React.createClass({
         <ScrollView contentContainerStyle={styles.scrollContainer} style={[ DEFCSS.contentContainer, styles.contentScroller ]}>
           <View style={DEFCSS.bgSpacer} />
           <View style={DEFCSS.pinkHeaderWrapper}>
+            <Text style={[DEFCSS.pinkHeaderTitle, DEFCSS.sansc]}>BEGIN HIER</Text>
+            <Text style={[DEFCSS.pinkHeaderSubTitle, DEFCSS.sans]}>start met ervaren</Text>
           </View>
         </ScrollView>
         <Toolbar/>
