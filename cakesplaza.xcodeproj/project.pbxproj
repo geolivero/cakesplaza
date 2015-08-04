@@ -28,7 +28,6 @@
 		BEDAB2621B6D28840045EBA8 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEDAB25D1B6D28840045EBA8 /* OpenSans-Italic.ttf */; };
 		BEDAB2631B6D28840045EBA8 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEDAB25E1B6D28840045EBA8 /* OpenSans-Light.ttf */; };
 		BEDAB2641B6D28840045EBA8 /* YesevaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEDAB25F1B6D28840045EBA8 /* YesevaOne.ttf */; };
-		BEDAB2681B6DC0B20045EBA8 /* defaults.js in Resources */ = {isa = PBXBuildFile; fileRef = BEDAB2671B6DC0B20045EBA8 /* defaults.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,7 +137,6 @@
 		BEDAB25D1B6D28840045EBA8 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "../cakesapp/cakesplaza/app/assets/iphone/fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		BEDAB25E1B6D28840045EBA8 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "../cakesapp/cakesplaza/app/assets/iphone/fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		BEDAB25F1B6D28840045EBA8 /* YesevaOne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = YesevaOne.ttf; path = ../cakesapp/cakesplaza/app/assets/iphone/fonts/YesevaOne.ttf; sourceTree = "<group>"; };
-		BEDAB2671B6DC0B20045EBA8 /* defaults.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = defaults.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,7 +298,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				BEDAB2651B6DC0B20045EBA8 /* app */,
 				BEDAB25A1B6D285D0045EBA8 /* Fonts */,
 				13B07FAE1A68108700A75B9A /* cakesplaza */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -330,22 +327,6 @@
 				BEDAB25F1B6D28840045EBA8 /* YesevaOne.ttf */,
 			);
 			name = Fonts;
-			sourceTree = "<group>";
-		};
-		BEDAB2651B6DC0B20045EBA8 /* app */ = {
-			isa = PBXGroup;
-			children = (
-				BEDAB2661B6DC0B20045EBA8 /* styles */,
-			);
-			path = app;
-			sourceTree = "<group>";
-		};
-		BEDAB2661B6DC0B20045EBA8 /* styles */ = {
-			isa = PBXGroup;
-			children = (
-				BEDAB2671B6DC0B20045EBA8 /* defaults.js */,
-			);
-			path = styles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -552,7 +533,6 @@
 				BEDAB2611B6D28840045EBA8 /* OpenSans-CondensedLight.ttf in Resources */,
 				BEDAB2631B6D28840045EBA8 /* OpenSans-Light.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				BEDAB2681B6DC0B20045EBA8 /* defaults.js in Resources */,
 				BEDAB2621B6D28840045EBA8 /* OpenSans-Italic.ttf in Resources */,
 				BEDAB2601B6D28840045EBA8 /* Allura-Regular.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
