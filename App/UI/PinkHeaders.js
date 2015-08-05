@@ -1,5 +1,5 @@
 var React = require('react-native');
-var DEFCSS = require('./Styles.Default');
+var DEFCSS = require('./../Styles/Default');
 
 var {
   AppRegistry,
@@ -16,7 +16,6 @@ var styles = StyleSheet.create({
     flex: 1
   },
   pinkHeaderTitle: {
-    fontSize: 35,
     paddingTop: 10,
     paddingLeft: 10
   },
@@ -31,8 +30,8 @@ var header = React.createClass({
   render: function() {
     return (
       <View style={[styles.pinkHeaderWrapper, DEFCSS.pinkBg]}>
-        <Text style={[styles.pinkHeaderTitle, DEFCSS.sansc]}>{this.props.title}</Text>
-        <Text style={[styles.pinkHeaderSubTitle, DEFCSS.sans]}>{this.props.subTitle}</Text>
+        <Text style={[styles.pinkHeaderTitle, DEFCSS.sansc, DEFCSS.titleSize]}>{this.props.title}</Text>
+        <Text style={[styles.pinkHeaderSubTitle, DEFCSS.sans, DEFCSS.subTitleSize]}>{this.props.subTitle}</Text>
       </View>
     );
   }

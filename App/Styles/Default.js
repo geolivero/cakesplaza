@@ -2,60 +2,68 @@
 var React = require('react-native');
 var Dimensions = require('Dimensions');
 var windowSize = Dimensions.get('window');
+var Settings = require('./../../Settings');
 
 var {
   StyleSheet
 } = React;
 
-var colors = {
-  oDark: '#D9171313',
-  oLight: '#80FFFFFF',
-  lightPink: '#FFE2E2',
-  darkBrown: '#1B1616',
-  white: '#FFFFFF',
-  sDarkBrown: '#423535'
-};
-
 
 module.exports = StyleSheet.create({
   darkBg: { 
-    backgroundColor: colors.darkBrown,
+    backgroundColor: Settings.colors.darkBrown
+  },
+  brownBg: {
+    backgroundColor: Settings.colors.brown
   },
   oDarkBg: { 
     backgroundColor: 'rgba(42, 34, 34, 0.8)',
   },
   darkColor: {
-    color: colors.darkBrown
+    color: Settings.colors.darkBrown
+  },
+  titleSize: {
+    fontSize: 35
+  },
+  subTitleSize: {
+    fontSize: 15
   },
   pinkBg: { 
-    backgroundColor: colors.lightPink,
+    backgroundColor: Settings.colors.lightPink,
+  },
+  whiteBg: { 
+    backgroundColor: 'white',
   },
   pinkColor: {
-    color: colors.lightPink
+    color: Settings.colors.lightPink
   },
   bgSpacer: {
     flex: 1,
     height: windowSize.height - 120
   },
   whiteColor: {
-    color: colors.white
+    color: Settings.colors.white
   },
   container: {
     flex: 1,
     padding: 0,
     margin: 0,
-    backgroundColor: colors.white
+    backgroundColor: Settings.colors.white
   },
   contentContainer: {
     padding: 0,
     margin: 0
   },
+  floatCenter: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   sansc: {
     fontFamily: 'OpenSans-CondensedLight',
-    color: colors.darkBrown
+    color: Settings.colors.darkBrown
   },
   sans: {
     fontFamily: 'OpenSans-Light',
-    color: colors.darkBrown
+    color: Settings.colors.darkBrown
   }
 });

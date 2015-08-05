@@ -1,13 +1,32 @@
 'use strict';
 
 var React = require('react-native');
+var Home = require('./App/Components/Home');
+
 var {
   AppRegistry,
   StyleSheet,
-  Text,
-  View,
+  NavigatorIOS
 } = React;
-var Cakesplaza = require('./Comp.Home');
+var styles = StyleSheet.create({
+  navContainer: {
+    flex: 1
+  }
+});
 
 
-AppRegistry.registerComponent('cakesplaza', () => Cakesplaza);
+var CP = React.createClass({
+  render: function () {
+    return (
+      <NavigatorIOS 
+        initialRoute={{
+          component: Home,
+          title: 'home'
+        }} 
+        style={styles.navContainer}/>
+    );
+  }
+});
+
+
+AppRegistry.registerComponent('cakesplaza', () => Home);

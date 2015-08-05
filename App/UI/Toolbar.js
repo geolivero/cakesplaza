@@ -1,5 +1,5 @@
 var React = require('react-native');
-var DEFCSS = require('./Styles.Default');
+var DEFCSS = require('./../Styles/Default');
 
 var {
   AppRegistry,
@@ -52,7 +52,7 @@ var toolbar = React.createClass({
         <View style={[ styles.height, styles.align, styles.btnLeft ]}>
           <Image source={require('image!btn_back')} />
         </View>
-        <Text style={[ DEFCSS.whiteColor, DEFCSS.sansc, styles.align, styles.height, styles.title ]}>{'Ik ben the title'.toUpperCase()}</Text>
+        <Text style={[ DEFCSS.sansc, styles.align, styles.height, styles.title, DEFCSS.whiteColor ]}>{'Ik ben the title'.toUpperCase()}</Text>
         <View style={[ styles.height, styles.align, styles.topBtns, styles.btnSearch ]}>
           <Image source={require('image!search_icon')} />
         </View>
