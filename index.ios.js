@@ -22,11 +22,12 @@ var CP = React.createClass({
         initialRoute={{
           component: Home,
           title: 'home'
-        }} 
+        }}
+        navigationBarHidden={true}
         style={styles.navContainer}/>
     );
   }
 });
 
 
-AppRegistry.registerComponent('cakesplaza', () => Home);
+AppRegistry.registerComponent('cakesplaza', () => CP);

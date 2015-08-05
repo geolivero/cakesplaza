@@ -1,5 +1,6 @@
 var React = require('react-native');
 var DEFCSS = require('./../Styles/Default');
+var tweenState = require('react-tween-state');
 var Dimensions = require('Dimensions');
 var windowSize = Dimensions.get('window');
 
@@ -8,6 +9,7 @@ var {
   StyleSheet,
   Image,
   Animated,
+  LayoutAnimation,
   Text,
   View,
 } = React;
@@ -25,24 +27,34 @@ var styles = StyleSheet.create({
 var arrow = React.createClass({
   getInitialState: function () {
     return {
-      bounceValue: new Animated.Value(0)
+      transY: 0
     };
   },
+  mixins: [tweenState.Mixin],
   render: function() {
     return (
-      <Animated.Image style={[ styles.arrow, {
-        transform: [{translateY: this.state.bounceValue}]
+      <Image style={[ styles.arrow, {
+        transform: [{translateY: this.getTweeningValue('translateY') }]
       }]} source={require('image!arrow_icon')} />
     );
   },
+  moveArrow: function () {
+    this.tweenState('translateY', {
+      easing: tweenState.easingTypes.easeOutQuint,
+      duration: 500,
+      endValue: this.state.transY === 0 ? 10 : 0,
+    });
+  },
   componentDidMount: function () {
-    Animated.spring(                          
+    //LayoutAnimation.spring();
+    /*Animated.spring(                          
       this.state.bounceValue,                 
       {
         toValue: 10,                         
         friction: 1,                          
       }
-    ).start(); 
+    ).start(); */
+    this.timer = setInterval(() => { this.moveArrow() }, 500);
   }
 });
 

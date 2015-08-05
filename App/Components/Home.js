@@ -2,7 +2,6 @@
 
 var React = require('react-native');
 
-
 var DEFCSS = require('./../Styles/Default');
 var Toolbar = require('./../UI/Toolbar');
 var PinkHeader = require('./../UI/PinkHeaders');
@@ -17,6 +16,7 @@ var {
   ScrollView,
   Image,
   Text,
+  LayoutAnimation,
   Animated,
   View,
 } = React;
@@ -73,13 +73,23 @@ var styles = StyleSheet.create({
 var home = React.createClass({
   _onScroll: function (e) {
     var scrollY = e.nativeEvent.contentOffset.y;
-    this.state.mImgTop = scrollY / 2;
-    console.log(this.state.mImgTop);
-
+    LayoutAnimation.spring();
+    if (scrollY > 0) {
+      this.setState({
+        mImgTop: (scrollY / 5) * -1,
+        mLogoTop: (scrollY / 3) * -1
+      });  
+    } else {
+      this.setState({ 
+        mImgScale: (((scrollY * -1) / 100) / 5) + 1 
+      });  
+    }
   },
   getInitialState: function () {
     return {
-      mImgTop: 0
+      mImgScale: 1,
+      mImgTop: 0,
+      mLogoTop: 0
     };
   },
   render: function() {
@@ -87,9 +97,13 @@ var home = React.createClass({
 
     return (
       <View contentContainerStyle={styles.scrollContainer} style={[ styles.container, DEFCSS.floatCenter]}>
-        <Image style={[styles.mainImage, { top: this.state.mImgTop } ]} 
+        <Image style={[styles.mainImage, { top: this.state.mImgTop, transform: [{ scale: this.state.mImgScale }] } ]} 
           source={require('image!bgHome')} />
-        <Image style={styles.logo} source={require('image!logo')} />
+        <Image style={[styles.logo, {
+          transform: [
+            { translateY: this.state.mLogoTop }
+          ]
+        }]} source={require('image!logo')} />
         
         <ScrollView scrollEventThrottle={30} onScroll={ this._onScroll } contentContainerStyle={styles.scrollContainer} style={[ DEFCSS.contentContainer, styles.contentScroller ]}>
           <View style={DEFCSS.bgSpacer} />
