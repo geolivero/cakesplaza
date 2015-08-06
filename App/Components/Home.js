@@ -105,7 +105,7 @@ var home = React.createClass({
           ]
         }]} source={require('image!logo')} />
         
-        <ScrollView scrollEventThrottle={30} onScroll={ this._onScroll } contentContainerStyle={styles.scrollContainer} style={[ DEFCSS.contentContainer, styles.contentScroller ]}>
+        <ScrollView scrollEventThrottle={24} onScroll={ this._onScroll } contentContainerStyle={styles.scrollContainer} style={[ DEFCSS.contentContainer, styles.contentScroller ]}>
           <View style={DEFCSS.bgSpacer} />
           <PinkHeader title={'BEGIN HIER'} subTitle={'start met ervaren'} />
           <Arrow />

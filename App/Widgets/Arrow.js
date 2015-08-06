@@ -1,6 +1,5 @@
 var React = require('react-native');
 var DEFCSS = require('./../Styles/Default');
-var tweenState = require('react-tween-state');
 var Dimensions = require('Dimensions');
 var windowSize = Dimensions.get('window');
 
@@ -9,52 +8,53 @@ var {
   StyleSheet,
   Image,
   Animated,
-  LayoutAnimation,
   Text,
   View,
 } = React;
 
 
-
-var styles = StyleSheet.create({
-  arrow: {
-    top: windowSize.height - 160,
-    position: 'absolute',
-    right: 20
-  }
-});
-
 var arrow = React.createClass({
+
   getInitialState: function () {
     return {
-      transY: 0
+      transY: new Animated.Value(0)
     };
   },
-  mixins: [tweenState.Mixin],
   render: function() {
+    var styles = StyleSheet.create({
+      arrow: {
+        top: windowSize.height - 160,
+        position: 'absolute',
+        right: 20,
+        transform: [{
+          translateY: this.state.transY
+        }]
+      }
+    });
+
     return (
-      <Image style={[ styles.arrow, {
-        transform: [{translateY: this.getTweeningValue('translateY') }]
-      }]} source={require('image!arrow_icon')} />
+      <Animated.Image style={ styles.arrow }
+       source={require('image!arrow_icon')} />
     );
   },
+  stopAnimation: function () {
+    alert('Animation stopped');
+  },
   moveArrow: function () {
-    this.tweenState('translateY', {
-      easing: tweenState.easingTypes.easeOutQuint,
-      duration: 500,
-      endValue: this.state.transY === 0 ? 10 : 0,
-    });
+    var self = this;
+    Animated.timing(
+      this.state.transY, { toValue: 20 }
+    ).start(function (e) {
+      if (e.finished) {
+        Animated.timing(self.state.transY, { toValue: 0 }).start(function () {
+          self.moveArrow();
+        }); 
+      }
+    });    
   },
   componentDidMount: function () {
-    //LayoutAnimation.spring();
-    /*Animated.spring(                          
-      this.state.bounceValue,                 
-      {
-        toValue: 10,                         
-        friction: 1,                          
-      }
-    ).start(); */
-    this.timer = setInterval(() => { this.moveArrow() }, 500);
+    var self = this;
+    this.moveArrow();
   }
 });
 
