@@ -38,15 +38,18 @@ var arrow = React.createClass({
     );
   },
   stopAnimation: function () {
-    alert('Animation stopped');
+    this.anim.stop();
   },
   moveArrow: function () {
     var self = this;
-    Animated.timing(
+    this.anim = Animated.timing(
       this.state.transY, { toValue: 20 }
-    ).start(function (e) {
+    );
+
+    this.anim.start(function (e) {
       if (e.finished) {
-        Animated.timing(self.state.transY, { toValue: 0 }).start(function () {
+        self.anim = Animated.timing(self.state.transY, { toValue: 0 });
+        self.anim.start(function () {
           self.moveArrow();
         }); 
       }

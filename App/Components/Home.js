@@ -92,9 +92,13 @@ var home = React.createClass({
       mLogoTop: 0
     };
   },
-  render: function() {
+  componentDidMount: function () {
     StatusBarIOS.setStyle('light-content');
-
+    //To cancel the arrow animation
+    //this.refs['theArrow'].stopAnimation();
+  },
+  render: function() {
+    
     return (
       <View contentContainerStyle={styles.scrollContainer} style={[ styles.container, DEFCSS.floatCenter]}>
         <Image style={[styles.mainImage, { top: this.state.mImgTop, transform: [{ scale: this.state.mImgScale }] } ]} 
@@ -105,10 +109,10 @@ var home = React.createClass({
           ]
         }]} source={require('image!logo')} />
         
-        <ScrollView scrollEventThrottle={24} onScroll={ this._onScroll } contentContainerStyle={styles.scrollContainer} style={[ DEFCSS.contentContainer, styles.contentScroller ]}>
+        <ScrollView scrollEventThrottle={2} onScroll={ this._onScroll } contentContainerStyle={styles.scrollContainer} style={[ DEFCSS.contentContainer, styles.contentScroller ]}>
           <View style={DEFCSS.bgSpacer} />
           <PinkHeader title={'BEGIN HIER'} subTitle={'start met ervaren'} />
-          <Arrow />
+          <Arrow ref={'theArrow'} />
           <View style={[styles.chooseBlock, DEFCSS.darkBg]}>
             <View style={[styles.circle, DEFCSS.brownBg, DEFCSS.floatCenter]}>
               <Image source={require('image!icon_cake')} />
@@ -129,7 +133,7 @@ var home = React.createClass({
           </View>
 
         </ScrollView>
-        <Toolbar/>
+        <Toolbar title={''}/>
       </View>
     );
   }

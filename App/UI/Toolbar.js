@@ -47,12 +47,14 @@ var styles = StyleSheet.create({
 
 var toolbar = React.createClass({
   render: function() {
+    var backBtn;
+    if (this.props.showBackBtn) {
+      backBtn = <View style={[ styles.height, styles.align, styles.btnLeft ]}><Image source={require('image!btn_back')} /></View>;
+    }
     return (
       <View style={[styles.bar, DEFCSS.oDarkBg ]}>
-        <View style={[ styles.height, styles.align, styles.btnLeft ]}>
-          <Image source={require('image!btn_back')} />
-        </View>
-        <Text style={[ DEFCSS.sansc, styles.align, styles.height, styles.title, DEFCSS.whiteColor ]}>{'Ik ben the title'.toUpperCase()}</Text>
+        { backBtn }
+        <Text style={[ DEFCSS.sansc, styles.align, styles.height, styles.title, DEFCSS.whiteColor ]}>{this.props.title.toUpperCase()}</Text>
         <View style={[ styles.height, styles.align, styles.topBtns, styles.btnSearch ]}>
           <Image source={require('image!search_icon')} />
         </View>
