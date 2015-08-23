@@ -8,5 +8,5 @@ module.exports.colors = {
   sDarkBrown: '#423535'
 };
 module.exports.REST = {
-  root: 'http://cakesplaza/'
+  root: 'http://www.cakesplaza.com/'
 };

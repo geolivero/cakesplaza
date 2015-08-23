@@ -115,13 +115,14 @@ var home = React.createClass({
   },
   fetchCollection: function () {
     if (fetch && !this.state.collection.length) {
-      var self = this;
-      fetch(this.state.collection.url).then(function (response) {
+
+      fetch(this.state.collection.url).then((response)=> {
         return response.json();
-      }).then(function (jsonData) {
-        self.state.collection.set(jsonData);
-        self.setHomeCollection();
-      }).catch(function (error) {
+      }).then((jsonData) => {
+        this.state.collection.set(jsonData);
+        this.setHomeCollection();
+        console.log('im fetched');
+      }).catch((error) => {
         console.log(error);
       });
     } else {
