@@ -8,12 +8,18 @@ var PinkHeader = require('./../UI/PinkHeaders');
 var Dimensions = require('Dimensions');
 var windowSize = Dimensions.get('window');
 var Arrow = require('./../Widgets/Arrow');
+var Settings = require('./../../Settings');
+
+var Bakers = require('./../Models/Baker');
+
+
 
 var {
   AppRegistry,
   StyleSheet,
   StatusBarIOS,
   ScrollView,
+  ListView,
   Image,
   Text,
   LayoutAnimation,
@@ -73,12 +79,12 @@ var styles = StyleSheet.create({
 var home = React.createClass({
   _onScroll: function (e) {
     var scrollY = e.nativeEvent.contentOffset.y;
-    LayoutAnimation.spring();
+    //LayoutAnimation.spring();
     if (scrollY > 0) {
       this.setState({
         mImgTop: (scrollY / 5) * -1,
         mLogoTop: (scrollY / 3) * -1
-      });  
+      }); 
     } else {
       this.setState({ 
         mImgScale: (((scrollY * -1) / 100) / 5) + 1 
@@ -86,19 +92,53 @@ var home = React.createClass({
     }
   },
   getInitialState: function () {
+    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     return {
       mImgScale: 1,
       mImgTop: 0,
-      mLogoTop: 0
+      mLogoTop: 0,
+      dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+      collection: new Bakers.collection(),
+      homeCollection: new ListView.DataSource({
+        rowHasChanged: (row1, row2) => row1 !== row2
+      })
     };
   },
   componentDidMount: function () {
     StatusBarIOS.setStyle('light-content');
+    this.fetchCollection();
     //To cancel the arrow animation
     //this.refs['theArrow'].stopAnimation();
   },
+  setHomeCollection: function () {
+    this.state.homeCollection.cloneWithRows(this.state.collection.getUsersHome());
+  },
+  fetchCollection: function () {
+    if (fetch && !this.state.collection.length) {
+      var self = this;
+      fetch(this.state.collection.url).then(function (response) {
+        return response.json();
+      }).then(function (jsonData) {
+        self.state.collection.set(jsonData);
+        self.setHomeCollection();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    } else {
+      this.setHomeCollection();
+    }
+  },
+  componentWillUnmount: function () {
+    backboneReact.off(this);
+  },
+  renderBaker: function (model) {
+    return (
+      <View>
+        <Text>{model.get('name')}</Text>
+      </View>
+    );
+  },
   render: function() {
-    
     return (
       <View contentContainerStyle={styles.scrollContainer} style={[ styles.container, DEFCSS.floatCenter]}>
         <Image style={[styles.mainImage, { top: this.state.mImgTop, transform: [{ scale: this.state.mImgScale }] } ]} 
@@ -131,14 +171,15 @@ var home = React.createClass({
             <Text style={[ DEFCSS.sansc, styles.btnTitle, DEFCSS.darkColor, DEFCSS.titleSize, { paddingTop: 15 } ]}>{'ONZE FAVORITE BAKKERS'}</Text>
             <Text style={[ DEFCSS.sans, DEFCSS.darkColor, styles.btnSubTitle, DEFCSS.subTitleSize, { textAlign: 'center', marginLeft: 20, marginRight: 20} ]}>{'wij hebben alvast leuke bakkers geselecteerd'}</Text>
           </View>
-
+          <ListView dataSource={this.state.homeCollection} renderRow={this.renderBaker} />
         </ScrollView>
         <Toolbar title={''}/>
       </View>
     );
   }
 });
-
+//<ListView dataSource={this.state.dataSource} renderRow={(rowData) => <Text>{rowData}</Text>} />
+//<ListView dataSource={this.state.homeCollection} renderRow={this.renderBaker} />
 
 
 module.exports = home;

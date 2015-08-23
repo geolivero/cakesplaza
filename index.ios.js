@@ -1,7 +1,9 @@
 'use strict';
 
+
 var React = require('react-native');
 var Home = require('./App/Components/Home');
+
 
 var {
   AppRegistry,
