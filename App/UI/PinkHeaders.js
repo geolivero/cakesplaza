@@ -16,13 +16,13 @@ var styles = StyleSheet.create({
     flex: 1
   },
   pinkHeaderTitle: {
-    paddingTop: 10,
-    paddingLeft: 10
+    left: 10,
+    top: 10
   },
   pinkHeaderSubTitle: {
-    paddingLeft: 10,
+    left: 10,
     position: 'relative',
-    top: -4
+    top: 0
   }
 });
 

@@ -23,11 +23,10 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		BEDAB2601B6D28840045EBA8 /* Allura-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEDAB25B1B6D28840045EBA8 /* Allura-Regular.ttf */; };
-		BEDAB2611B6D28840045EBA8 /* OpenSans-CondensedLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEDAB25C1B6D28840045EBA8 /* OpenSans-CondensedLight.ttf */; };
-		BEDAB2621B6D28840045EBA8 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEDAB25D1B6D28840045EBA8 /* OpenSans-Italic.ttf */; };
-		BEDAB2631B6D28840045EBA8 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEDAB25E1B6D28840045EBA8 /* OpenSans-Light.ttf */; };
-		BEDAB2641B6D28840045EBA8 /* YesevaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEDAB25F1B6D28840045EBA8 /* YesevaOne.ttf */; };
+		BEF120D31BB75AD7009E9938 /* Allura-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEF120CF1BB75AA2009E9938 /* Allura-Regular.ttf */; };
+		BEF120D41BB75AD7009E9938 /* OpenSans-CondensedLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEF120D01BB75AA2009E9938 /* OpenSans-CondensedLight.ttf */; };
+		BEF120D51BB75AD7009E9938 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEF120D11BB75AA2009E9938 /* OpenSans-Light.ttf */; };
+		BEF120D61BB75AD7009E9938 /* YesevaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEF120D21BB75AA2009E9938 /* YesevaOne.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,11 +131,10 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		BEDAB25B1B6D28840045EBA8 /* Allura-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Allura-Regular.ttf"; path = "../cakesapp/cakesplaza/app/assets/iphone/fonts/Allura-Regular.ttf"; sourceTree = "<group>"; };
-		BEDAB25C1B6D28840045EBA8 /* OpenSans-CondensedLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-CondensedLight.ttf"; path = "../cakesapp/cakesplaza/app/assets/iphone/fonts/OpenSans-CondensedLight.ttf"; sourceTree = "<group>"; };
-		BEDAB25D1B6D28840045EBA8 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "../cakesapp/cakesplaza/app/assets/iphone/fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
-		BEDAB25E1B6D28840045EBA8 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "../cakesapp/cakesplaza/app/assets/iphone/fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
-		BEDAB25F1B6D28840045EBA8 /* YesevaOne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = YesevaOne.ttf; path = ../cakesapp/cakesplaza/app/assets/iphone/fonts/YesevaOne.ttf; sourceTree = "<group>"; };
+		BEF120CF1BB75AA2009E9938 /* Allura-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Allura-Regular.ttf"; path = "fonts/Allura-Regular.ttf"; sourceTree = "<group>"; };
+		BEF120D01BB75AA2009E9938 /* OpenSans-CondensedLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-CondensedLight.ttf"; path = "fonts/OpenSans-CondensedLight.ttf"; sourceTree = "<group>"; };
+		BEF120D11BB75AA2009E9938 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		BEF120D21BB75AA2009E9938 /* YesevaOne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = YesevaOne.ttf; path = fonts/YesevaOne.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,11 +318,10 @@
 		BEDAB25A1B6D285D0045EBA8 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				BEDAB25B1B6D28840045EBA8 /* Allura-Regular.ttf */,
-				BEDAB25C1B6D28840045EBA8 /* OpenSans-CondensedLight.ttf */,
-				BEDAB25D1B6D28840045EBA8 /* OpenSans-Italic.ttf */,
-				BEDAB25E1B6D28840045EBA8 /* OpenSans-Light.ttf */,
-				BEDAB25F1B6D28840045EBA8 /* YesevaOne.ttf */,
+				BEF120CF1BB75AA2009E9938 /* Allura-Regular.ttf */,
+				BEF120D01BB75AA2009E9938 /* OpenSans-CondensedLight.ttf */,
+				BEF120D11BB75AA2009E9938 /* OpenSans-Light.ttf */,
+				BEF120D21BB75AA2009E9938 /* YesevaOne.ttf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -379,6 +376,9 @@
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 62Q63UA435;
 					};
 				};
 			};
@@ -528,13 +528,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEDAB2641B6D28840045EBA8 /* YesevaOne.ttf in Resources */,
+				BEF120D31BB75AD7009E9938 /* Allura-Regular.ttf in Resources */,
+				BEF120D41BB75AD7009E9938 /* OpenSans-CondensedLight.ttf in Resources */,
+				BEF120D51BB75AD7009E9938 /* OpenSans-Light.ttf in Resources */,
+				BEF120D61BB75AD7009E9938 /* YesevaOne.ttf in Resources */,
 				008F07F31AC5B25A0029DE68 /* main.jsbundle in Resources */,
-				BEDAB2611B6D28840045EBA8 /* OpenSans-CondensedLight.ttf in Resources */,
-				BEDAB2631B6D28840045EBA8 /* OpenSans-Light.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				BEDAB2621B6D28840045EBA8 /* OpenSans-Italic.ttf in Resources */,
-				BEDAB2601B6D28840045EBA8 /* Allura-Regular.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -623,6 +622,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -632,6 +633,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = cakesplaza;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -639,6 +641,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -648,6 +652,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = cakesplaza;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

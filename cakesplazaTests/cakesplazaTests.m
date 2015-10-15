@@ -10,9 +10,8 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-#import "RCTAssert.h"
-#import "RCTRedBox.h"
 #import "RCTRootView.h"
+#import "RCTLog.h"
 
 #define TIMEOUT_SECONDS 240
 #define TEXT_TO_LOOK_FOR @"Welcome to React Native!"
@@ -47,7 +46,6 @@
     [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
     [[NSRunLoop mainRunLoop] runMode:NSRunLoopCommonModes beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
 
-    redboxError = [[RCTRedBox sharedInstance] currentErrorMessage];
 
     foundElement = [self findSubviewInView:vc.view matching:^BOOL(UIView *view) {
       if ([view.accessibilityLabel isEqualToString:TEXT_TO_LOOK_FOR]) {

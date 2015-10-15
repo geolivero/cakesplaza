@@ -25,6 +25,8 @@ var arrow = React.createClass({
       arrow: {
         top: windowSize.height - 160,
         position: 'absolute',
+        width: 17,
+        height: 55,
         right: 20,
         transform: [{
           translateY: this.state.transY

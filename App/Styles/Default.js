@@ -5,7 +5,8 @@ var windowSize = Dimensions.get('window');
 var Settings = require('./../../Settings');
 
 var {
-  StyleSheet
+  StyleSheet,
+  Platform
 } = React;
 
 
@@ -16,11 +17,28 @@ module.exports = StyleSheet.create({
   brownBg: {
     backgroundColor: Settings.colors.brown
   },
+  lightgrayBg: {
+    backgroundColor: Settings.colors.lightGray
+  },
   oDarkBg: { 
     backgroundColor: 'rgba(42, 34, 34, 0.8)',
   },
+  oDarkBgLight: { 
+    backgroundColor: 'rgba(42, 34, 34, 0.2)',
+  },
+  oWhiteBg: { 
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+  },
   darkColor: {
     color: Settings.colors.darkBrown
+  },
+  bgLightGray: {
+    backgroundColor: Settings.colors.lightGray
+  },
+  smallHeader: {
+    fontSize: 20,
+    padding: 10,
+    color: Settings.colors.brown
   },
   titleSize: {
     fontSize: 35
@@ -28,11 +46,26 @@ module.exports = StyleSheet.create({
   subTitleSize: {
     fontSize: 15
   },
+  contentScroller: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    backgroundColor: 'transparent',
+    width: windowSize.width,
+    height: windowSize.height
+  },
   pinkBg: { 
     backgroundColor: Settings.colors.lightPink,
   },
   whiteBg: { 
     backgroundColor: 'white',
+  },
+  indicator:  {
+    width: windowSize.width,
+    height: 40
+  },
+  scrollContainer: {
+    paddingVertical: 0
   },
   pinkColor: {
     color: Settings.colors.lightPink
@@ -59,11 +92,27 @@ module.exports = StyleSheet.create({
     justifyContent: 'center'
   },
   sansc: {
-    fontFamily: 'OpenSans-CondensedLight',
+    fontFamily: Platform.OS === 'ios' ? 'OpenSans-CondensedLight': 'sans-serif-condensed',
     color: Settings.colors.darkBrown
   },
   sans: {
-    fontFamily: 'OpenSans-Light',
+    fontFamily: Platform.OS === 'ios' ? 'OpenSans-Light' : 'sans-serif-light',
     color: Settings.colors.darkBrown
+  },
+  rowBakerLogo: {
+    width: 76,
+    height: 76,
+    borderRadius: 38
+  },
+  rowBakerLogoPlaceHolder: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    left: (windowSize.width / 2) - (80 / 2),
+    position: 'absolute',
+    bottom: 70
   }
 });

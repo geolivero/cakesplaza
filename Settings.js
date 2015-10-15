@@ -4,7 +4,9 @@ module.exports.colors = {
   oLight: '#80FFFFFF',
   lightPink: '#FFE2E2',
   darkBrown: '#1B1616',
+  pink: '#CD8989',
   white: '#FFFFFF',
+  lightGray: '#EAEAEA',
   sDarkBrown: '#423535'
 };
 module.exports.REST = {

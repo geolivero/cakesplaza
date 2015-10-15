@@ -1,15 +1,14 @@
 var Backbone = require('backbone');
 var _ = Backbone._;
-var backboneReact = require('backbone-react-component');
 var Settings = require('../../Settings');
 
 var Model = Backbone.Model.extend({
-  urlRoot: Settings.REST + 'search/advanced-search'
+  urlRoot: Settings.REST + 'search/advanced-search?rand=123'
 });
 
 var Collection = Backbone.Collection.extend({
   model: Model,
-  url: Settings.REST.root + 'search/advanced-search',
+  url: Settings.REST.root + 'search/advanced-search?rand=123',
 });
 
 _.extend(Collection.prototype, {

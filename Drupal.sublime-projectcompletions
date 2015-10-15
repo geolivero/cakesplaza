@@ -1,0 +1,1 @@
+react_component	react_component(${1:\$module}, ${2:\$props})

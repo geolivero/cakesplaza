@@ -10,11 +10,10 @@
 	<string>org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>YesevaOne.ttf</string>
-		<string>OpenSans-Light.ttf</string>
-		<string>OpenSans-Italic.ttf</string>
 		<string>OpenSans-CondensedLight.ttf</string>
+		<string>OpenSans-Light.ttf</string>
 		<string>Allura-Regular.ttf</string>
+		<string>YesevaOne.ttf</string>
 	</array>
 	<key>LSApplicationCategoryType</key>
 	<string></string>

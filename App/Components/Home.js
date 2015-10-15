@@ -9,8 +9,10 @@ var Dimensions = require('Dimensions');
 var windowSize = Dimensions.get('window');
 var Arrow = require('./../Widgets/Arrow');
 var Settings = require('./../../Settings');
-
 var Bakers = require('./../Models/Baker');
+var Baker = require('./../Widgets/Baker');
+var BakersProfile = require('./../Components/Bakersprofile');
+var Links = require('./Widgets/Links');
 
 
 
@@ -20,8 +22,11 @@ var {
   StatusBarIOS,
   ScrollView,
   ListView,
+  TouchableHighlight,
   Image,
   Text,
+  Platform,
+  ActivityIndicatorIOS,
   LayoutAnimation,
   Animated,
   View,
@@ -36,14 +41,6 @@ var styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     top: 0,
-    width: windowSize.width,
-    height: windowSize.height
-  },
-  contentScroller: {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    backgroundColor: 'transparent',
     width: windowSize.width,
     height: windowSize.height
   },
@@ -71,32 +68,61 @@ var styles = StyleSheet.create({
     fontSize: 20
   },
   whiteHeader: {
-    height: 130,
+    height: 90,
     alignItems: 'center'
+  },
+  rowBaker: {
+    height: 355,
+    alignItems: 'center'
+  },
+  rowBakerImg: {
+    width: windowSize.width,
+    height: 260
+  },
+  rowBakerLogo: {
+    width: 76,
+    height: 76,
+    borderRadius: 38,
+    position: 'absolute',
+    borderColor: 'white',
+    borderWidth: 4,
+    left: (windowSize.width / 2) - (76 / 2),
+    bottom: 70
+  },
+  whiteHeaderFixed: {
+    position: 'absolute',
+    width: windowSize.width,
+    left: 0,
+    top: 0,
+    height: 160,
+    paddingTop: 60
+  },
+  icon_cake: {
+    width: 29,
+    height: 32
+  },
+  rowBakerTxt: {
+    height: 95,
+    left: 0,
+    width: windowSize.width,
+    fontSize: 25,
+    textAlign: 'center',
+    paddingTop: 30
   }
 });
 
 var home = React.createClass({
-  _onScroll: function (e) {
-    var scrollY = e.nativeEvent.contentOffset.y;
-    //LayoutAnimation.spring();
-    if (scrollY > 0) {
-      this.setState({
-        mImgTop: (scrollY / 5) * -1,
-        mLogoTop: (scrollY / 3) * -1
-      }); 
-    } else {
-      this.setState({ 
-        mImgScale: (((scrollY * -1) / 100) / 5) + 1 
-      });  
-    }
-  },
+
   getInitialState: function () {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     return {
       mImgScale: 1,
       mImgTop: 0,
       mLogoTop: 0,
+      fixedTop: false,
+      bakerHeaderTop: 0,
+      bakerHeaderY: 0,
+      dataLoaded: false,
       dataSource: ds.cloneWithRows(['row 1', 'row 2']),
       collection: new Bakers.collection(),
       homeCollection: new ListView.DataSource({
@@ -104,14 +130,62 @@ var home = React.createClass({
       })
     };
   },
+  onScroll: function (e) {
+    if (Platform.OS === 'android') {
+      return;
+    }
+    var scrollY = e.nativeEvent.contentOffset.y;
+    //LayoutAnimation.spring();
+    //console.log(scrollY >= this.state.bakerHeaderTop + 50);
+    if (scrollY >= this.state.bakerHeaderTop - 50) {
+      /*this.setState({
+        fixedTop: true
+      });
+
+      this.setState({
+        bakerHeaderY: this.state.bakerHeaderTop + scrollY
+      });*/
+    } else {
+      this.setState({
+        fixedTop: false
+      });
+    }
+    if (scrollY > 0) {
+      this.setState({
+        mImgTop: (scrollY / 5) * -1,
+        mLogoTop: (scrollY / 3) * -1
+      });
+    } else {
+      this.setState({ 
+        mImgScale: (((scrollY * -1) / 100) / 5) + 1 
+      });  
+    }
+  },
+  getBakerHeaderPos: function (ox, oy, width, height, px, py) {
+    this.setState({
+      bakerHeaderTop: oy,
+      bakerHeaderY: oy
+    });
+  },
   componentDidMount: function () {
-    StatusBarIOS.setStyle('light-content');
+    if (Platform.OS === 'ios') {
+        StatusBarIOS.setStyle('light-content');
+    }
+    
     this.fetchCollection();
     //To cancel the arrow animation
     //this.refs['theArrow'].stopAnimation();
+    setTimeout(() => {
+      this.refs.bakerHeader.measure(this.getBakerHeaderPos);
+    }, 1);
+    
+    
   },
   setHomeCollection: function () {
-    this.state.homeCollection.cloneWithRows(this.state.collection.getUsersHome());
+    //this.state.homeCollection.cloneWithRows(this.state.collection.getUsersHome());
+    this.setState({
+      homeCollection: this.state.homeCollection.cloneWithRows(this.state.collection.getUsersHome())
+    })
   },
   fetchCollection: function () {
     if (fetch && !this.state.collection.length) {
@@ -120,8 +194,11 @@ var home = React.createClass({
         return response.json();
       }).then((jsonData) => {
         this.state.collection.set(jsonData);
+        console.log(jsonData);
         this.setHomeCollection();
-        console.log('im fetched');
+        this.setState({
+          dataLoaded: true
+        })
       }).catch((error) => {
         console.log(error);
       });
@@ -134,8 +211,34 @@ var home = React.createClass({
   },
   renderBaker: function (model) {
     return (
-      <View>
-        <Text>{model.get('name')}</Text>
+      <Baker model={model} onPress={()=> this.openBakersProfile(model)} />
+    );
+  },
+
+  openBakersProfile: function (model) {
+
+    this.props.navigator.push({
+      id: 'bakersprofile', 
+      model: model
+    });
+  },
+
+  renderWhiteHeader: function (fixed) {
+    return(
+      <View ref={(!fixed ? 'bakerHeader' : '')} 
+        style={[
+          styles.whiteHeader, 
+          DEFCSS.whiteBg, 
+          (fixed ? styles.whiteHeaderFixed : null ),
+          (this.state.fixedTop ? {
+            position: 'absolute',
+            left: 0,
+            top: this.state.bakerHeaderTop
+          }: null)
+          
+        ]}>
+        <Text style={[ DEFCSS.sansc, styles.btnTitle, DEFCSS.darkColor, DEFCSS.titleSize, { marginTop: 10 } ]}>{'ONZE FAVORITE BAKKERS'}</Text>
+        <Text style={[ DEFCSS.sans, DEFCSS.darkColor, styles.btnSubTitle, DEFCSS.subTitleSize, { textAlign: 'center', marginLeft: 20, marginRight: 20} ]}>{'wij hebben alvast leuke bakkers geselecteerd'}</Text>
       </View>
     );
   },
@@ -144,19 +247,19 @@ var home = React.createClass({
       <View contentContainerStyle={styles.scrollContainer} style={[ styles.container, DEFCSS.floatCenter]}>
         <Image style={[styles.mainImage, { top: this.state.mImgTop, transform: [{ scale: this.state.mImgScale }] } ]} 
           source={require('image!bgHome')} />
-        <Image style={[styles.logo, {
+        <Image onClick={()=> alert('clicked')} style={[styles.logo, {
           transform: [
             { translateY: this.state.mLogoTop }
           ]
         }]} source={require('image!logo')} />
         
-        <ScrollView scrollEventThrottle={2} onScroll={ this._onScroll } contentContainerStyle={styles.scrollContainer} style={[ DEFCSS.contentContainer, styles.contentScroller ]}>
+        <ScrollView scrollEventThrottle={2} onScroll={ this.onScroll } contentContainerStyle={styles.scrollContainer} style={[ DEFCSS.contentContainer, DEFCSS.contentScroller ]}>
           <View style={DEFCSS.bgSpacer} />
           <PinkHeader title={'BEGIN HIER'} subTitle={'start met ervaren'} />
           <Arrow ref={'theArrow'} />
           <View style={[styles.chooseBlock, DEFCSS.darkBg]}>
             <View style={[styles.circle, DEFCSS.brownBg, DEFCSS.floatCenter]}>
-              <Image source={require('image!icon_cake')} />
+              <Image style={styles.icon_cake} source={require('image!icon_cake')} />
             </View>
             <Text style={[ DEFCSS.sansc, styles.btnTitle, DEFCSS.pinkColor ]}>{'IK WIL TAART'}</Text>
             <Text style={[ DEFCSS.sans, DEFCSS.pinkColor, styles.btnSubTitle ]}>{'zoek of vraag offertes by bakkers'}</Text>
@@ -168,19 +271,18 @@ var home = React.createClass({
             <Text style={[ DEFCSS.sansc, styles.btnTitle, DEFCSS.pinkColor ]}>{'IK BAK TAART'}</Text>
             <Text style={[ DEFCSS.sans, DEFCSS.pinkColor, styles.btnSubTitle ]}>{'zoek of vraag offertes by bakkers'}</Text>
           </View>
-          <View style={[styles.whiteHeader, DEFCSS.whiteBg]}>
-            <Text style={[ DEFCSS.sansc, styles.btnTitle, DEFCSS.darkColor, DEFCSS.titleSize, { paddingTop: 15 } ]}>{'ONZE FAVORITE BAKKERS'}</Text>
-            <Text style={[ DEFCSS.sans, DEFCSS.darkColor, styles.btnSubTitle, DEFCSS.subTitleSize, { textAlign: 'center', marginLeft: 20, marginRight: 20} ]}>{'wij hebben alvast leuke bakkers geselecteerd'}</Text>
-          </View>
-          <ListView dataSource={this.state.homeCollection} renderRow={this.renderBaker} />
+          
+          {this.renderWhiteHeader()}
+          <ActivityIndicatorIOS
+            hidesWhenStopped={true}
+            animating={!this.state.dataLoaded}
+            style={[styles.centering, DEFCSS.whiteBg, DEFCSS.indicator ]} />
+          <ListView scrollEnabled={false} style={[DEFCSS.whiteBg]} dataSource={this.state.homeCollection} renderRow={this.renderBaker} />
         </ScrollView>
         <Toolbar title={''}/>
       </View>
     );
   }
 });
-//<ListView dataSource={this.state.dataSource} renderRow={(rowData) => <Text>{rowData}</Text>} />
-//<ListView dataSource={this.state.homeCollection} renderRow={this.renderBaker} />
-
 
 module.exports = home;

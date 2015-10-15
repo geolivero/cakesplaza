@@ -5,6 +5,8 @@ var {
   AppRegistry,
   StyleSheet,
   Image,
+  Platform,
+  TouchableHighlight,
   Text,
   View,
 } = React;
@@ -20,10 +22,9 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     left: 0,
     right: 0,
-    paddingTop: 20
+    paddingTop: Platform.OS === 'ios' ? 20 : 0
   },
   height: {
-    height: 40,
     alignItems: 'center'
   },
   title:  {
@@ -35,7 +36,20 @@ var styles = StyleSheet.create({
   btnLeft: {
     justifyContent: 'flex-start',
     flexDirection: 'row',
-    width: 30
+    marginRight: 10, 
+    top: Platform.OS === 'ios' ? 15 : 25
+  },
+  backBtn: {
+    width: 10,
+    height: 15
+  },
+  btnSearch: {
+    width: 21,
+    height: 20
+  },
+  btnMenu: {
+    width: 21,
+    height: 17
   },
   align: {
     justifyContent: 'center'
@@ -49,17 +63,17 @@ var toolbar = React.createClass({
   render: function() {
     var backBtn;
     if (this.props.showBackBtn) {
-      backBtn = <View style={[ styles.height, styles.align, styles.btnLeft ]}><Image source={require('image!btn_back')} /></View>;
+      backBtn = <TouchableHighlight onPress={this.props.onPress}><View  style={[ styles.height, styles.align, styles.btnLeft ]}><Image style={[styles.backBtn]} source={require('image!btn_back')} /></View></TouchableHighlight>;
     }
     return (
       <View style={[styles.bar, DEFCSS.oDarkBg ]}>
         { backBtn }
         <Text style={[ DEFCSS.sansc, styles.align, styles.height, styles.title, DEFCSS.whiteColor ]}>{this.props.title.toUpperCase()}</Text>
-        <View style={[ styles.height, styles.align, styles.topBtns, styles.btnSearch ]}>
-          <Image source={require('image!search_icon')} />
+        <View style={[ styles.height, styles.align, styles.topBtns ]}>
+          <Image style={styles.btnSearch} source={require('image!search_icon')} />
         </View>
-        <View style={[ styles.height, styles.align, styles.topBtns, styles.btnMenu ]}>
-          <Image source={require('image!hamb_icon')} />
+        <View style={[ styles.height, styles.align, styles.topBtns ]}>
+          <Image style={styles.btnMenu} source={require('image!hamb_icon')} />
         </View>
       </View>
     );
