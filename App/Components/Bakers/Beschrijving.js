@@ -68,11 +68,11 @@ var styles = {
     padding: 10
   },
   adress: {
-
+    marginBottom: 30
   }
 };
 
-var bakers = React.createClass({
+var beschrijving = React.createClass({
   closePopup(e) {
     this.props.onClose();
   },
@@ -85,7 +85,7 @@ var bakers = React.createClass({
       <View style={[styles.popup, DEFCSS.oDarkBg]}>
         <View style={[styles.panelPopup]}>
           <View style={[styles.titleBar, DEFCSS.lightgrayBg]}>
-            <Text style={[DEFCSS.sansc, styles.headerTitle]}>{'Contact gegevens'}</Text>
+            <Text style={[DEFCSS.sansc, styles.headerTitle]}>{'Over mij'}</Text>
             <TouchableHighlight onPress={this.closePopup}>
               <Image style={[styles.closeBtn]} source={require('image!close_icon')} />
             </TouchableHighlight>
@@ -95,12 +95,8 @@ var bakers = React.createClass({
             style={[ styles.contentEL, DEFCSS.whiteBg ]}>
             <View style={[styles.adress]}>
               <Text style={[DEFCSS.sansc, styles.innerConent]}>
-                { this.props.model.get('field_straat_value') } { this.props.model.get('field_huisnummer_value') } {'\n'}
-                { this.props.model.get('field_plaats_value') }
+                { this.props.model.get('bedrijf_plain_text') }
               </Text>
-              <Links label="Telefoon" text={this.props.model.get('field_telefoon_value')} type="tel:" />
-              <Links label="Mobiel" text={this.props.model.get('field_mobiele_nummer_value')} type="tel:" />
-              <Links label="Website" text={this.props.model.get('field_mijn_website_adres_value')} type="http:" />
             </View>
 
             
@@ -113,4 +109,4 @@ var bakers = React.createClass({
   }
 });
 
-module.exports = bakers;
+module.exports = beschrijving;

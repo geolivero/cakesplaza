@@ -26,6 +26,10 @@ var styles = {
     textDecorationStyle: 'dotted',
     textDecorationColor: Settings.colors.pink,
     color: Settings.colors.pink
+  },
+  label: {
+    fontSize: 16,
+    color: Settings.colors.darkBrown
   }
 };
 
@@ -40,17 +44,43 @@ module.exports = React.createClass({
 
   handleClick(e) {
     if (Platform.OS === 'ios') {
-      LinkingIOS.openURL(this.props.type + this.props.text);
+      LinkingIOS.openURL((this.props.type === 'http:' ? '' : this.props.type) + this.props.text);
     } else {
-      WebIntent.mail(this.props.type + this.props.text);
+      WebIntent.open((this.props.type === 'http:' ? '' : this.props.type) + this.props.text);
     }
-    
+  },
+
+  fixLink(url) {
+    if (!url) {
+      return '';
+    }
+    if (this.props.type === 'http:') {
+      if (url.indexOf('http') > -1) {
+        return url;
+      } else {
+        return 'http://' + url;
+      }
+    } else {
+      return url ? url.replace(/[http(s):\/\/]/g, '') : '';  
+    }
+  },
+
+  getLabelText() {
+    if (this.props.label) {
+      return (
+        <Text style={[styles.label, DEFCSS.sansc]}>
+          {this.props.label}
+        </Text>
+      );  
+    }
+    return null;
   },
 
   render() {
     return(
       <TouchableOpacity onPress={(e) => { this.handleClick(e); } }>
-      <Text style={[DEFCSS.sansc, styles.link]}>{this.props.text}</Text>
+        {this.getLabelText()}
+        <Text style={[DEFCSS.sansc, styles.link]}>{this.fixLink(this.props.text)}</Text>
       </TouchableOpacity>
     );
   }

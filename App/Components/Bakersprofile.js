@@ -15,6 +15,8 @@ var LoaderBar = require('./../Widgets/Loaderbar');
 var Swiper = require('react-native-swiper');
 var Price = require('format-price');
 var Contact = require('./Bakers/Contact');
+var Beschrijving = require('./Bakers/Beschrijving');
+var CakeTypes = require('./Bakers/Caketypes');
 
 var {
   AppRegistry,
@@ -221,6 +223,13 @@ var bakers = React.createClass({
       case 'contact':
         return <Contact onClose={()=> this.onPopUpClose()} model={this.props.model} />;
         break;
+      case 'overmij':
+        return <Beschrijving onClose={()=> this.onPopUpClose()} model={this.props.model} />;
+        break;
+      case 'caketypes':
+        return <CakeTypes onClose={()=> this.onPopUpClose()} model={this.props.model} />;
+        break;
+
     }
     return null;
   },
@@ -367,12 +376,12 @@ var bakers = React.createClass({
             style={[styles.buttons]} 
             source={require('image!icon_details')} />
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => this.openBakersDetails()}>
+          <TouchableHighlight onPress={() => this.openBakersDetails('overmij')}>
           <Image 
             style={[styles.buttons]} 
             source={require('image!icon_about')} />
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => this.openBakersDetails()}>
+          <TouchableHighlight onPress={() => this.openBakersDetails('caketypes')}>
           <Image 
             style={[styles.buttons]} 
             source={require('image!icon_types')} />
