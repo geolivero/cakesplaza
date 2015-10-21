@@ -238,20 +238,22 @@ var bakers = React.createClass({
     return (
       <Swiper 
         ref={'theSwiper'}
-        key={model.get('uid')}
+        key={model.get('nid')}
         style={styles.row} 
         height={windowSize.width + 100} 
         loop={false}
         dot={<View style={{backgroundColor:'rgba(0,0,0,.2)', width: 5, height: 5,borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />}
         activeDot={<View style={{backgroundColor: '#000', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />}
         >
-        <View style={[DEFCSS.whiteBg]}>
+        <View key={model.get('nid')} style={[DEFCSS.whiteBg]}>
           
             <Text style={[styles.rowBakerTxt, DEFCSS.whiteBg, DEFCSS.sansc ]}>{model.get('title')}</Text>
+            <TouchableHighlight onPress={() => this.openImageGalerie(model.get('cake_pic'))}>
             <Image style={[DEFCSS.darkBg, styles.cakeImg]} 
             source={{uri: model.get('cake_pic')}}
             resizeMode={'cover'}
             capInsets={{left: 0, top: 0}} />
+            </TouchableHighlight>
         </View>
         <View style={styles.slide2}>
         <View style={[DEFCSS.rowBakerLogo, DEFCSS.darkBg, {alignSelf: 'center', marginTop: 10}]}>
@@ -273,16 +275,21 @@ var bakers = React.createClass({
     );
   },
 
-  renderBasicProduct: function (model) {
+  openImageGalerie(imgURL) {
+    console.log(imgURL);
+  },
+
+  renderBasicProduct(model) {
     return(
-        <View style={[DEFCSS.whiteBg, styles.row]}>
+        <View key={model.get('nid')} style={[DEFCSS.whiteBg, styles.row]}>
           <Text style={[styles.rowBakerTxt, DEFCSS.whiteBg, DEFCSS.sansc ]}>{model.get('title')}</Text>
-          
+            <TouchableHighlight onPress={() => this.openImageGalerie(model.get('cake_pic'))}>
             <Image style={[DEFCSS.darkBg, styles.cakeImg]} 
               source={{uri: model.get('cake_pic')}} 
               defaultSource={require('image!defaultpic')}
               resizeMode={'cover'}
               capInsets={{left: 0, top: 0}} />
+            </TouchableHighlight>
         </View>
     );
   },

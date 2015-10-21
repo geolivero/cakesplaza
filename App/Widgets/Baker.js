@@ -60,8 +60,8 @@ var styles = StyleSheet.create({
 var baker = React.createClass({
   render() {
     return(
-      <TouchableHighlight onPress={() => this.props.onPress(this.props.model)}>
-        <View style={[styles.rowBaker, DEFCSS.whiteBg]}>
+      <TouchableHighlight key={this.props.model.get('uid')} onPress={() => this.props.onPress(this.props.model)}>
+        <View key={this.props.model.get('uid')} style={[styles.rowBaker, DEFCSS.whiteBg]}>
           <Image style={[styles.rowBakerImg, DEFCSS.darkBg]} 
             source={{uri: this.props.model.get('cake_pic')}} 
             resizeMode={'cover'}
