@@ -5,7 +5,11 @@ var Backbone = require('backbone');
 var _ = Backbone._;
 var DEFCSS = require('./../../Styles/Default');
 var Helpers = require('./../../Helpers');
+var Settings = require('./../../../Settings');
 var Links = require('./../Widgets/Links');
+var { Icon, } = require('react-native-icons');
+var CloseBtn = require('./../Widgets/CloseBtn');
+
 
 var {
   View,
@@ -21,7 +25,6 @@ var styles = {
     backgroundColor: 'white',
     position: 'absolute',
     left: 0,
-
     right: 0,
     top: 0,
     bottom: 0,
@@ -80,9 +83,9 @@ var beschrijving = React.createClass({
 
   renderList() {
     var list = [];
-    _.map(this.props.model.get('terms'), (term)=> {
+    _.map(this.props.model.get('terms'), (term, i)=> {
       list.push(
-        <Text style={[DEFCSS.sansc, styles.innerConent]}>
+        <Text key={i} style={[DEFCSS.sansc, styles.innerConent]}>
           { term.name }
         </Text>
       );
@@ -98,9 +101,7 @@ var beschrijving = React.createClass({
         <View style={[styles.panelPopup]}>
           <View style={[styles.titleBar, DEFCSS.lightgrayBg]}>
             <Text style={[DEFCSS.sansc, styles.headerTitle]}>{'Wat bak ik?'}</Text>
-            <TouchableHighlight onPress={this.closePopup}>
-              <Image style={[styles.closeBtn]} source={require('image!close_icon')} />
-            </TouchableHighlight>
+            <CloseBtn onPress={this.closePopup} />
           </View>
           <ScrollView 
             contentContainerStyle={DEFCSS.scrollContainer} 

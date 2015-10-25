@@ -7,13 +7,12 @@
   },
   "dependencies": {
     "backbone": "^1.2.3",
+    "underscore": "^1.8.3",
     "format-price": "^0.0.2",
     "numeral": "^1.5.3",
-    "react-native": "^0.11.0",
-    "react-native-communications": "0.0.6",
+    "react-native": "^0.13.0",
     "react-native-icons": "^0.5.1",
     "react-native-swiper": "^1.3.0",
-    "react-native-webintent": "^1.0.2",
     "react-timer-mixin": "^0.13.2"
   }
 }

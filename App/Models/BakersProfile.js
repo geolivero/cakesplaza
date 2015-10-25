@@ -1,5 +1,5 @@
 var Backbone = require('../Modules/BackboneAjax');
-var _ = Backbone._;
+var _ = require('underscore');
 var Settings = require('../../Settings');
 
 var Model = Backbone.Model.extend({

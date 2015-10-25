@@ -1,7 +1,7 @@
 var React = require('react-native');
 var DEFCSS = require('./../../Styles/Default');
 var Settings = require('./../../../Settings');
-var WebIntent = require('react-native-webintent');
+//var WebIntent = require('react-native-webintent');
 
 var {
   TouchableHighlight,
@@ -46,7 +46,7 @@ module.exports = React.createClass({
     if (Platform.OS === 'ios') {
       LinkingIOS.openURL((this.props.type === 'http:' ? '' : this.props.type) + this.props.text);
     } else {
-      WebIntent.open((this.props.type === 'http:' ? '' : this.props.type) + this.props.text);
+      //WebIntent.open((this.props.type === 'http:' ? '' : this.props.type) + this.props.text);
     }
   },
 

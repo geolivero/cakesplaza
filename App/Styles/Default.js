@@ -99,6 +99,9 @@ module.exports = StyleSheet.create({
     fontFamily: Platform.OS === 'ios' ? 'OpenSans-Light' : 'sans-serif-light',
     color: Settings.colors.darkBrown
   },
+  pTop: {
+    paddingTop: Platform.OS === 'ios' ? 20 : 0
+  },
   rowBakerLogo: {
     width: 76,
     height: 76,

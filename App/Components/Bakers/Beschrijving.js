@@ -4,7 +4,11 @@ var React = require('react-native');
 var Backbone = require('backbone');
 var DEFCSS = require('./../../Styles/Default');
 var Helpers = require('./../../Helpers');
+var Settings = require('./../../../Settings');
 var Links = require('./../Widgets/Links');
+var { Icon, } = require('react-native-icons');
+var CloseBtn = require('./../Widgets/CloseBtn');
+
 
 var {
   View,
@@ -86,9 +90,7 @@ var beschrijving = React.createClass({
         <View style={[styles.panelPopup]}>
           <View style={[styles.titleBar, DEFCSS.lightgrayBg]}>
             <Text style={[DEFCSS.sansc, styles.headerTitle]}>{'Over mij'}</Text>
-            <TouchableHighlight onPress={this.closePopup}>
-              <Image style={[styles.closeBtn]} source={require('image!close_icon')} />
-            </TouchableHighlight>
+            <CloseBtn onPress={this.closePopup} />
           </View>
           <ScrollView 
             contentContainerStyle={DEFCSS.scrollContainer} 

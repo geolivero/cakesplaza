@@ -6,6 +6,8 @@ var Home = require('./App/Components/Home');
 var BakersProfile = require('./App/Components/Bakersprofile');
 var Dimensions = require('Dimensions');
 var windowSize = Dimensions.get('window');
+var PicturePopup = require('./App/Components/Widgets/PicturePopup');
+
 var {
   AppRegistry,
   StyleSheet,
@@ -78,6 +80,9 @@ var CP = React.createClass({
       break;
       case 'bakersprofile':
         return <BakersProfile model={route.model} navigator={nav} />
+      break;
+      case 'bakersgalerie':
+        return <PicturePopup onClose={route.onClose} imgURL={route.imgURL} navigator={nav} />
       break;
     }
   },

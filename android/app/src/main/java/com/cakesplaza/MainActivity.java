@@ -10,12 +10,9 @@ import com.facebook.react.ReactRootView;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-
-import java.lang.reflect.Field;
-import android.content.Context;
-import android.graphics.Typeface;
-import com.ivanph.webintent.RNWebIntentPackage;
-
+import com.smixx.reactnativeicons.ReactNativeIcons;
+import java.util.Arrays;
+import com.smixx.reactnativeicons.IconFont;
 
 public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
 
@@ -27,20 +24,12 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
         super.onCreate(savedInstanceState);
         mReactRootView = new ReactRootView(this);
 
-        final Typeface regular = Typeface.createFromAsset(this.getAssets(),
-                "fonts/OpenSans-Light.ttf");
-        replaceFont("DEFAULT", regular);
-
-        final Typeface sans = Typeface.createFromAsset(this.getAssets(),
-                "fonts/OpenSans-CondensedLight.ttf");
-        replaceFont("SANS_SERIF", sans);
-
-
         mReactInstanceManager = ReactInstanceManager.builder()
                 .setApplication(getApplication())
+                .setBundleAssetName("index.android.bundle")
                 .setJSMainModuleName("index.android")
                 .addPackage(new MainReactPackage())
-                .addPackage(new RNWebIntentPackage())
+                .addPackage(new ReactNativeIcons())
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
@@ -57,6 +46,15 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
             return true;
         }
         return super.onKeyUp(keyCode, event);
+    }
+
+    @Override
+    public void onBackPressed() {
+      if (mReactInstanceManager != null) {
+        mReactInstanceManager.onBackPressed();
+      } else {
+        super.onBackPressed();
+      }
     }
 
     @Override
@@ -79,20 +77,6 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
 
         if (mReactInstanceManager != null) {
             mReactInstanceManager.onResume(this);
-        }
-    }
-
-    protected static void replaceFont(String staticTypefaceFieldName,
-                                      final Typeface newTypeface) {
-        try {
-            final Field staticField = Typeface.class
-                    .getDeclaredField(staticTypefaceFieldName);
-            staticField.setAccessible(true);
-            staticField.set(null, newTypeface);
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
         }
     }
 }
