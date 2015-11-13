@@ -7,11 +7,16 @@ var BakersProfile = require('./App/Components/Bakersprofile');
 var Dimensions = require('Dimensions');
 var windowSize = Dimensions.get('window');
 var PicturePopup = require('./App/Components/Widgets/PicturePopup');
+var BakersMap = require('./App/Components/Map');
+var Search = require('./App/Components/Search');
+var BakersDemo = require('./App/Components/Demo/DemoBaker');
+var NewUserAccount = require('./App/Components/NewUser');
 
 var {
   AppRegistry,
   StyleSheet,
   Navigator,
+  StatusBarIOS,
   View,
   TouchableOpacity,
   Text,
@@ -74,16 +79,34 @@ FlatFloatFromRight.animationInterpolators.out = buildStyleInterpolator(FlatFadeT
 
 var CP = React.createClass({
   renderScene(route, nav) {
+    StatusBarIOS.setHidden(false);
     switch(route.id) {
       case 'home':
         return <Home navigator={nav} />
       break;
       case 'bakersprofile':
-        return <BakersProfile model={route.model} navigator={nav} />
+        return <BakersProfile collection={route.collection} model={route.model} navigator={nav} />
       break;
       case 'bakersgalerie':
         return <PicturePopup onClose={route.onClose} imgURL={route.imgURL} navigator={nav} />
       break;
+      case 'bakersmap':
+        StatusBarIOS.setHidden(true);
+        return <BakersMap onClose={route.onClose} model={route.model} collection={route.collection} navigator={nav} />
+      break;
+      case 'search':
+        StatusBarIOS.setHidden(true);
+        return <Search collection={route.collection} navigator={nav} />
+      break;
+      case 'demobaker':
+        StatusBarIOS.setHidden(true);
+        return <BakersDemo navigator={nav} />
+      break;
+      case 'createNewUserAccount':
+        StatusBarIOS.setHidden(true);
+        return <NewUserAccount navigator={nav} type={route.type} />
+      break;
+      
     }
   },
   configureScene() {

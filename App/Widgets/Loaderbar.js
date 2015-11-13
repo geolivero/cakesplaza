@@ -27,7 +27,7 @@ var loaderBar = React.createClass({
   render: function() {
     var styles = StyleSheet.create({
       loaderBar: {
-        top: windowSize.height - (Platform.OS === 'ios' ? 25 : 30),
+        top: windowSize.height - (Platform.OS === 'ios' ? 5 : 30),
         position: 'absolute',
         left: 0,
         height: 5,
@@ -46,6 +46,7 @@ var loaderBar = React.createClass({
     );
   },
   stop: function () {
+    clearTimeout(this.timer);
     this.anim.stop();
     this.setState({
       stopped: true
@@ -66,7 +67,7 @@ var loaderBar = React.createClass({
         this.setState({
           transX: new Animated.Value(0)
         });
-        setTimeout(()=> {
+        this.timer = setTimeout(()=> {
           this.start();
         }, 1);
 

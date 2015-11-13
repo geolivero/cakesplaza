@@ -12,6 +12,66 @@ var {
 } = React;
 
 
+
+
+module.exports = React.createClass({
+
+  getInitialState() {
+    return {
+      collection: []
+    };
+  },
+
+  openSearch() {
+    this.props.navigator.push({
+      id: 'search', 
+      collection: this.props.collection
+    });
+  },
+  openMenu() {
+
+  },
+
+  componentDidMount() {
+    this.setState({
+      collection: this.props.collection
+    });
+  },
+
+  render() {
+    var backBtn;
+    if (this.props.showBackBtn) {
+      backBtn = <TouchableHighlight onPress={this.props.onPress}><View  style={[ styles.height, styles.align, styles.btnLeft ]}><Image style={[styles.backBtn]} source={require('image!btn_back')} /></View></TouchableHighlight>;
+    }
+    return (
+      <View style={[styles.bar, DEFCSS.oDarkBg ]}>
+        { backBtn }
+        <Text style={[ DEFCSS.sansc, styles.align, styles.height, styles.title, DEFCSS.whiteColor ]}>{this.props.title.toUpperCase()}</Text>
+        {
+          ()=>{
+            if (this.state.collection.length > 0) {
+              return (
+                  <TouchableHighlight onPress={ this.openSearch }>
+                    <View style={[ styles.height, styles.align, styles.topBtns ]}>
+                      <Image style={styles.btnSearch} source={require('image!search_icon')} />
+                    </View>
+                  </TouchableHighlight>
+              );
+            }
+          }()
+        }
+        <TouchableHighlight onPress={ this.openMenu }>
+          <View style={[ styles.height, styles.align, styles.topBtns ]}>
+            <Image style={styles.btnMenu} source={require('image!hamb_icon')} />
+          </View>
+        </TouchableHighlight>
+      </View>
+    );
+  }
+});
+
+
+
 var styles = StyleSheet.create({
   bar: {
     position: 'absolute',
@@ -58,27 +118,3 @@ var styles = StyleSheet.create({
     padding: 5 
   }
 });
-
-var toolbar = React.createClass({
-  render: function() {
-    var backBtn;
-    if (this.props.showBackBtn) {
-      backBtn = <TouchableHighlight onPress={this.props.onPress}><View  style={[ styles.height, styles.align, styles.btnLeft ]}><Image style={[styles.backBtn]} source={require('image!btn_back')} /></View></TouchableHighlight>;
-    }
-    return (
-      <View style={[styles.bar, DEFCSS.oDarkBg ]}>
-        { backBtn }
-        <Text style={[ DEFCSS.sansc, styles.align, styles.height, styles.title, DEFCSS.whiteColor ]}>{this.props.title.toUpperCase()}</Text>
-        <View style={[ styles.height, styles.align, styles.topBtns ]}>
-          <Image style={styles.btnSearch} source={require('image!search_icon')} />
-        </View>
-        <View style={[ styles.height, styles.align, styles.topBtns ]}>
-          <Image style={styles.btnMenu} source={require('image!hamb_icon')} />
-        </View>
-      </View>
-    );
-  }
-});
-
-
-module.exports = toolbar;

@@ -201,12 +201,23 @@ var bakers = React.createClass({
             <TouchableHighlight onPress={() => this.openImageGalerie(model.get('cake_pic'))}>
             <Image style={[DEFCSS.darkBg, styles.cakeImg]} 
               source={{uri: model.get('cake_pic')}} 
-              defaultSource={require('image!defaultpic')}
               resizeMode={'cover'}
               capInsets={{left: 0, top: 0}} />
             </TouchableHighlight>
         </View>
     );
+  },
+
+  closeBakersMap() {
+
+  },
+
+  openMap() {
+    this.props.navigator.push({
+      id: 'bakersmap',
+      onClose: this.closeBakersMap,
+      model: this.props.model
+    });
   },
 
   getProduct: function (model) {
@@ -232,7 +243,7 @@ var bakers = React.createClass({
       return null;
     }
     return (
-          <View style={[styles.lastContainer, DEFCSS.oDarkBgLight ]}>
+          <View style={[ styles.lastContainer, DEFCSS.oDarkBgLight ]}>
             <Image 
               style={[DEFCSS.rowBakerLogo, styles.bakersLogo , styles.logoFooter]}
               source={{uri: this.props.model.get('logo')}}  />
@@ -246,18 +257,19 @@ var bakers = React.createClass({
       return (<Image 
           style={[styles.bakers_bg]} 
           resizeMode={'cover'}
-          defaultSource={require('image!defaultpic')} 
-          source={{uri: 'http://facebook.github.io/react/img/logo_og.png'}} />
-
+          source={{uri: this.props.model.get('bgimage')}} />
         );
     }
-      return (<Image 
-          style={[styles.bakers_bg]}
-          resizeMode={'cover'}
-          source={require('image!defaultpic')} />);
+    return (<Image 
+        style={[styles.bakers_bg]}
+        resizeMode={'cover'}
+        source={require('image!defaultpic')} />);
   },
 
   render: function() {
+    console.log(this.props.model);
+    console.log(this.props.model.get('field_bedrijfsnaam_value'));
+    console.log('======');
     return (
       <View style={[styles.container]}>
         {this.renderBgImage(this.props.model)}
@@ -268,7 +280,7 @@ var bakers = React.createClass({
 
           <View style={DEFCSS.bgSpacer} />
           <PinkHeader 
-            title={this.props.model.get('name').toUpperCase()} 
+            title={(this.props.model.get('field_bedrijfsnaam_value') || this.props.model.get('field_naam_value')).toUpperCase()} 
             subTitle={'get your cake on!'} />
 
           <View>
@@ -293,9 +305,27 @@ var bakers = React.createClass({
 
         <Toolbar 
           showBackBtn={true} 
-          onPress={this.goBack} 
+          onPress={this.goBack}
+          collection={this.props.collection}
+          navigator={this.props.navigator}
           title={this.getBakersCompanyName()} />
         <View ref={'toolBar'} style={[ DEFCSS.oWhiteBg, styles.toolBar]}>
+
+          
+          {()=> {
+            if (this.props.model.get('lat') && this.props.model.get('lng')) {            
+              return (
+                <TouchableHighlight onPress={ this.openMap }>
+                  <Icon
+                    name='fontawesome|map-marker'
+                    size={22}
+                    color={Settings.colors.darkPink}
+                    style={styles.buttons} />
+                </TouchableHighlight>
+              )
+            }
+          }()}
+          
           
           <TouchableHighlight onPress={() => this.openBakersDetails('contact')}>
           <Icon

@@ -1,3 +1,6 @@
+var Dimensions = require('Dimensions');
+var windowSize = Dimensions.get('window');
+
 module.exports.colors = {
   oDark: '#D9171313',
   brown: '#423535',
@@ -9,8 +12,18 @@ module.exports.colors = {
   white: '#FFFFFF',
   lightGray: '#EAEAEA',
   darkGray: '#979797',
-  sDarkBrown: '#423535'
+  sDarkBrown: '#423535',
+  darkerPink: '#A35E5E'
 };
+
+module.exports.box = {
+  width: windowSize.width,
+  height: windowSize.height
+}
+
+
+
+module.exports.mapToken = 'sk.eyJ1IjoiZ2VvbGl2ZXJvIiwiYSI6ImNpZ2ZveGVqYjBza2N2d2tyNnF1bzRzcDEifQ.Dv7zNPmn7jTdEpthtKZnfA';
 module.exports.REST = {
   root: 'http://www.cakesplaza.com/'
 };

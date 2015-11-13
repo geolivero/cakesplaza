@@ -10,6 +10,7 @@ var {
 } = React;
 
 
+
 module.exports = StyleSheet.create({
   darkBg: { 
     backgroundColor: Settings.colors.darkBrown
@@ -72,7 +73,7 @@ module.exports = StyleSheet.create({
   },
   bgSpacer: {
     flex: 1,
-    height: windowSize.height - 120
+    height: windowSize.height - 100
   },
   whiteColor: {
     color: Settings.colors.white

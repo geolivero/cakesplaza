@@ -68,7 +68,7 @@ var styles = StyleSheet.create({
     fontSize: 20
   },
   whiteHeader: {
-    height: 90,
+    height: 120,
     alignItems: 'center'
   },
   rowBaker: {
@@ -219,7 +219,8 @@ var home = React.createClass({
 
     this.props.navigator.push({
       id: 'bakersprofile', 
-      model: model
+      model: model,
+      collection: this.state.collection
     });
   },
 
@@ -235,13 +236,19 @@ var home = React.createClass({
             left: 0,
             top: this.state.bakerHeaderTop
           }: null)
-          
         ]}>
         <Text style={[ DEFCSS.sansc, styles.btnTitle, DEFCSS.darkColor, DEFCSS.titleSize, { marginTop: 10 } ]}>{'ONZE FAVORITE BAKKERS'}</Text>
         <Text style={[ DEFCSS.sans, DEFCSS.darkColor, styles.btnSubTitle, DEFCSS.subTitleSize, { textAlign: 'center', marginLeft: 20, marginRight: 20} ]}>{'wij hebben alvast leuke bakkers geselecteerd'}</Text>
       </View>
     );
   },
+
+  openDemoBaker() {
+    this.props.navigator.push({
+      id: 'demobaker'
+    });
+  },
+
   render: function() {
     return (
       <View contentContainerStyle={styles.scrollContainer} style={[ styles.container, DEFCSS.floatCenter]}>
@@ -257,20 +264,26 @@ var home = React.createClass({
           <View style={DEFCSS.bgSpacer} />
           <PinkHeader title={'BEGIN HIER'} subTitle={'start met ervaren'} />
           <Arrow ref={'theArrow'} />
-          <View style={[styles.chooseBlock, DEFCSS.darkBg]}>
-            <View style={[styles.circle, DEFCSS.brownBg, DEFCSS.floatCenter]}>
-              <Image style={styles.icon_cake} source={require('image!icon_cake')} />
+
+          <TouchableHighlight onPress={this.openDemoBaker}>
+            <View style={[styles.chooseBlock, DEFCSS.darkBg]}>
+              <View style={[styles.circle, DEFCSS.brownBg, DEFCSS.floatCenter]}>
+                <Image style={styles.icon_cake} source={require('image!icon_cake')} />
+              </View>
+              <Text style={[ DEFCSS.sansc, styles.btnTitle, DEFCSS.pinkColor ]}>{'IK WIL TAART'}</Text>
+              <Text style={[ DEFCSS.sans, DEFCSS.pinkColor, styles.btnSubTitle ]}>{'zoek of vraag offertes by bakkers'}</Text>
             </View>
-            <Text style={[ DEFCSS.sansc, styles.btnTitle, DEFCSS.pinkColor ]}>{'IK WIL TAART'}</Text>
-            <Text style={[ DEFCSS.sans, DEFCSS.pinkColor, styles.btnSubTitle ]}>{'zoek of vraag offertes by bakkers'}</Text>
-          </View>
-          <View style={[styles.chooseBlock, DEFCSS.brownBg]}>
-            <View style={[styles.circle, DEFCSS.darkBg, DEFCSS.floatCenter]}>
-              <Image source={require('image!icon_roller')} />
+          </TouchableHighlight>
+
+          <TouchableHighlight onPress={this.openDemoBaker}>
+            <View style={[styles.chooseBlock, DEFCSS.brownBg]}>
+              <View style={[styles.circle, DEFCSS.darkBg, DEFCSS.floatCenter]}>
+                <Image source={require('image!icon_roller')} />
+              </View>
+              <Text style={[ DEFCSS.sansc, styles.btnTitle, DEFCSS.pinkColor ]}>{'IK BAK TAART'}</Text>
+              <Text style={[ DEFCSS.sans, DEFCSS.pinkColor, styles.btnSubTitle ]}>{'Ik verkoop of toon mijn taarten'}</Text>
             </View>
-            <Text style={[ DEFCSS.sansc, styles.btnTitle, DEFCSS.pinkColor ]}>{'IK BAK TAART'}</Text>
-            <Text style={[ DEFCSS.sans, DEFCSS.pinkColor, styles.btnSubTitle ]}>{'zoek of vraag offertes by bakkers'}</Text>
-          </View>
+          </TouchableHighlight>
           
           {this.renderWhiteHeader()}
           <ActivityIndicatorIOS
@@ -279,7 +292,7 @@ var home = React.createClass({
             style={[styles.centering, DEFCSS.whiteBg, DEFCSS.indicator ]} />
           <ListView scrollEnabled={false} style={[DEFCSS.whiteBg]} dataSource={this.state.homeCollection} renderRow={this.renderBaker} />
         </ScrollView>
-        <Toolbar title={''}/>
+        <Toolbar title={''} collection={this.state.collection} navigator={this.props.navigator}/>
       </View>
     );
   }

@@ -42,10 +42,22 @@
 		BED5EF501BD7E8B900BB6C0B /* ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BED5EF3E1BD7E8B900BB6C0B /* ionicons.ttf */; };
 		BED5EF511BD7E8B900BB6C0B /* Material-Design-Iconic-Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BED5EF3F1BD7E8B900BB6C0B /* Material-Design-Iconic-Font.ttf */; };
 		BED5EF521BD7E8B900BB6C0B /* zocial-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BED5EF401BD7E8B900BB6C0B /* zocial-regular-webfont.ttf */; };
+		BEECABD71BE164E1001CB94C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEECABD61BE164E1001CB94C /* CoreTelephony.framework */; };
+		BEECABD91BE164E9001CB94C /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEECABD81BE164E9001CB94C /* GLKit.framework */; };
+		BEECABDB1BE164F1001CB94C /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEECABDA1BE164F1001CB94C /* ImageIO.framework */; };
+		BEECABDD1BE164F8001CB94C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEECABDC1BE164F8001CB94C /* MobileCoreServices.framework */; };
+		BEECABDF1BE16500001CB94C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEECABDE1BE16500001CB94C /* QuartzCore.framework */; };
+		BEECABE11BE16507001CB94C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEECABE01BE16507001CB94C /* SystemConfiguration.framework */; };
+		BEECABE31BE16512001CB94C /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BEECABE21BE16512001CB94C /* libc++.tbd */; };
+		BEECABE51BE1651E001CB94C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BEECABE41BE1651E001CB94C /* libsqlite3.tbd */; };
+		BEECABE71BE16527001CB94C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BEECABE61BE16527001CB94C /* libz.tbd */; };
 		BEF120D31BB75AD7009E9938 /* Allura-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEF120CF1BB75AA2009E9938 /* Allura-Regular.ttf */; };
 		BEF120D41BB75AD7009E9938 /* OpenSans-CondensedLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEF120D01BB75AA2009E9938 /* OpenSans-CondensedLight.ttf */; };
 		BEF120D51BB75AD7009E9938 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEF120D11BB75AA2009E9938 /* OpenSans-Light.ttf */; };
 		BEF120D61BB75AD7009E9938 /* YesevaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEF120D21BB75AA2009E9938 /* YesevaOne.ttf */; };
+		BEF124801BE5942D0050B299 /* libRCTMapboxGL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF124731BE590B70050B299 /* libRCTMapboxGL.a */; };
+		BEF124821BE598430050B299 /* Mapbox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BEF124811BE598430050B299 /* Mapbox.bundle */; };
+		BEF124841BE5985E0050B299 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BEF124831BE5985E0050B299 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +145,20 @@
 			remoteGlobalIDString = 2F5A3EB81ACDBF8000439386;
 			remoteInfo = ReactNativeIcons;
 		};
+		BEF124721BE590B70050B299 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BEF1246D1BE590B70050B299 /* RCTMapboxGL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C5DBB3401AF2EF2B00E611A9;
+			remoteInfo = RCTMapboxGL;
+		};
+		BEF124741BE590B70050B299 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BEF1246D1BE590B70050B299 /* RCTMapboxGL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C5DBB34B1AF2EF2B00E611A9;
+			remoteInfo = RCTMapboxGLTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -159,7 +185,6 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		BED5EF241BD7DAEF00BB6C0B /* FontAwesomeKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FontAwesomeKit; path = "node_modules/react-native-icons/ios/ReactNativeIcons/Libraries/FontAwesomeKit"; sourceTree = "<group>"; };
 		BED5EF261BD7E4E100BB6C0B /* ReactNativeIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeIcons.xcodeproj; path = "node_modules/react-native-icons/ios/ReactNativeIcons.xcodeproj"; sourceTree = "<group>"; };
-		BED5EF2D1BD7E86400BB6C0B /* FontAwesomeKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FontAwesomeKit; path = "node_modules/react-native-icons/ios/ReactNativeIcons/Libraries/FontAwesomeKit"; sourceTree = "<group>"; };
 		BED5EF2F1BD7E8B800BB6C0B /* FAKFontAwesome.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FAKFontAwesome.h; path = "node_modules/react-native-icons/ios/ReactNativeIcons/Libraries/FontAwesomeKit/FAKFontAwesome.h"; sourceTree = "<group>"; };
 		BED5EF301BD7E8B800BB6C0B /* FAKFontAwesome.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FAKFontAwesome.m; path = "node_modules/react-native-icons/ios/ReactNativeIcons/Libraries/FontAwesomeKit/FAKFontAwesome.m"; sourceTree = "<group>"; };
 		BED5EF311BD7E8B900BB6C0B /* FAKFoundationIcons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FAKFoundationIcons.h; path = "node_modules/react-native-icons/ios/ReactNativeIcons/Libraries/FontAwesomeKit/FAKFoundationIcons.h"; sourceTree = "<group>"; };
@@ -178,10 +203,23 @@
 		BED5EF3E1BD7E8B900BB6C0B /* ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ionicons.ttf; path = "node_modules/react-native-icons/ios/ReactNativeIcons/Libraries/FontAwesomeKit/ionicons.ttf"; sourceTree = "<group>"; };
 		BED5EF3F1BD7E8B900BB6C0B /* Material-Design-Iconic-Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Material-Design-Iconic-Font.ttf"; path = "node_modules/react-native-icons/ios/ReactNativeIcons/Libraries/FontAwesomeKit/Material-Design-Iconic-Font.ttf"; sourceTree = "<group>"; };
 		BED5EF401BD7E8B900BB6C0B /* zocial-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zocial-regular-webfont.ttf"; path = "node_modules/react-native-icons/ios/ReactNativeIcons/Libraries/FontAwesomeKit/zocial-regular-webfont.ttf"; sourceTree = "<group>"; };
+		BEECABD21BE16469001CB94C /* libMapbox.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMapbox.a; path = "node_modules/react-native-mapbox-gl/ios/RCTMapboxGL/libMapbox.a"; sourceTree = "<group>"; };
+		BEECABD61BE164E1001CB94C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		BEECABD81BE164E9001CB94C /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		BEECABDA1BE164F1001CB94C /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		BEECABDC1BE164F8001CB94C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		BEECABDE1BE16500001CB94C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BEECABE01BE16507001CB94C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BEECABE21BE16512001CB94C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		BEECABE41BE1651E001CB94C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		BEECABE61BE16527001CB94C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		BEF120CF1BB75AA2009E9938 /* Allura-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Allura-Regular.ttf"; path = "fonts/Allura-Regular.ttf"; sourceTree = "<group>"; };
 		BEF120D01BB75AA2009E9938 /* OpenSans-CondensedLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-CondensedLight.ttf"; path = "fonts/OpenSans-CondensedLight.ttf"; sourceTree = "<group>"; };
 		BEF120D11BB75AA2009E9938 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		BEF120D21BB75AA2009E9938 /* YesevaOne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = YesevaOne.ttf; path = fonts/YesevaOne.ttf; sourceTree = "<group>"; };
+		BEF1246D1BE590B70050B299 /* RCTMapboxGL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTMapboxGL.xcodeproj; path = "node_modules/react-native-mapbox-gl/ios/RCTMapboxGL.xcodeproj"; sourceTree = "<group>"; };
+		BEF124811BE598430050B299 /* Mapbox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Mapbox.bundle; path = "node_modules/react-native-mapbox-gl/ios/RCTMapboxGL/Mapbox.bundle"; sourceTree = "<group>"; };
+		BEF124831BE5985E0050B299 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = "node_modules/react-native-mapbox-gl/ios/RCTMapboxGL/Settings.bundle"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +234,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEF124801BE5942D0050B299 /* libRCTMapboxGL.a in Frameworks */,
+				BEECABE71BE16527001CB94C /* libz.tbd in Frameworks */,
+				BEECABE51BE1651E001CB94C /* libsqlite3.tbd in Frameworks */,
+				BEECABE31BE16512001CB94C /* libc++.tbd in Frameworks */,
+				BEECABE11BE16507001CB94C /* SystemConfiguration.framework in Frameworks */,
+				BEECABDF1BE16500001CB94C /* QuartzCore.framework in Frameworks */,
+				BEECABDD1BE164F8001CB94C /* MobileCoreServices.framework in Frameworks */,
+				BEECABDB1BE164F1001CB94C /* ImageIO.framework in Frameworks */,
+				BEECABD91BE164E9001CB94C /* GLKit.framework in Frameworks */,
+				BEECABD71BE164E1001CB94C /* CoreTelephony.framework in Frameworks */,
 				BED5EF2C1BD7E51500BB6C0B /* libReactNativeIcons.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -319,6 +367,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				BEF1246D1BE590B70050B299 /* RCTMapboxGL.xcodeproj */,
 				BED5EF261BD7E4E100BB6C0B /* ReactNativeIcons.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -345,6 +394,18 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				BEF124831BE5985E0050B299 /* Settings.bundle */,
+				BEF124811BE598430050B299 /* Mapbox.bundle */,
+				BEECABE61BE16527001CB94C /* libz.tbd */,
+				BEECABE41BE1651E001CB94C /* libsqlite3.tbd */,
+				BEECABE21BE16512001CB94C /* libc++.tbd */,
+				BEECABE01BE16507001CB94C /* SystemConfiguration.framework */,
+				BEECABDE1BE16500001CB94C /* QuartzCore.framework */,
+				BEECABDC1BE164F8001CB94C /* MobileCoreServices.framework */,
+				BEECABDA1BE164F1001CB94C /* ImageIO.framework */,
+				BEECABD81BE164E9001CB94C /* GLKit.framework */,
+				BEECABD61BE164E1001CB94C /* CoreTelephony.framework */,
+				BEECABD21BE16469001CB94C /* libMapbox.a */,
 				BED5EF2F1BD7E8B800BB6C0B /* FAKFontAwesome.h */,
 				BED5EF301BD7E8B800BB6C0B /* FAKFontAwesome.m */,
 				BED5EF311BD7E8B900BB6C0B /* FAKFoundationIcons.h */,
@@ -363,7 +424,6 @@
 				BED5EF3E1BD7E8B900BB6C0B /* ionicons.ttf */,
 				BED5EF3F1BD7E8B900BB6C0B /* Material-Design-Iconic-Font.ttf */,
 				BED5EF401BD7E8B900BB6C0B /* zocial-regular-webfont.ttf */,
-				BED5EF2D1BD7E86400BB6C0B /* FontAwesomeKit */,
 				BED5EF241BD7DAEF00BB6C0B /* FontAwesomeKit */,
 				BEDAB25A1B6D285D0045EBA8 /* Fonts */,
 				13B07FAE1A68108700A75B9A /* cakesplaza */,
@@ -401,6 +461,15 @@
 				BEF120D21BB75AA2009E9938 /* YesevaOne.ttf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		BEF1246E1BE590B70050B299 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BEF124731BE590B70050B299 /* libRCTMapboxGL.a */,
+				BEF124751BE590B70050B299 /* RCTMapboxGLTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,6 +555,10 @@
 				{
 					ProductGroup = 78C398B11ACF4ADC00677621 /* Products */;
 					ProjectRef = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
+				},
+				{
+					ProductGroup = BEF1246E1BE590B70050B299 /* Products */;
+					ProjectRef = BEF1246D1BE590B70050B299 /* RCTMapboxGL.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302D41ABCB9D200DB3ED1 /* Products */;
@@ -602,6 +675,20 @@
 			remoteRef = BED5EF2A1BD7E4E100BB6C0B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		BEF124731BE590B70050B299 /* libRCTMapboxGL.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTMapboxGL.a;
+			remoteRef = BEF124721BE590B70050B299 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BEF124751BE590B70050B299 /* RCTMapboxGLTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RCTMapboxGLTests.xctest;
+			remoteRef = BEF124741BE590B70050B299 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -616,6 +703,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEF124841BE5985E0050B299 /* Settings.bundle in Resources */,
+				BEF124821BE598430050B299 /* Mapbox.bundle in Resources */,
 				BED5EF411BD7E8B900BB6C0B /* FAKFontAwesome.h in Resources */,
 				BED5EF421BD7E8B900BB6C0B /* FAKFontAwesome.m in Resources */,
 				BED5EF431BD7E8B900BB6C0B /* FAKFoundationIcons.h in Resources */,
@@ -737,6 +826,10 @@
 				);
 				INFOPLIST_FILE = iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/node_modules/react-native-mapbox-gl/ios/RCTMapboxGL",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = cakesplaza;
 				PROVISIONING_PROFILE = "";
@@ -756,6 +849,10 @@
 				);
 				INFOPLIST_FILE = iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/node_modules/react-native-mapbox-gl/ios/RCTMapboxGL",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = cakesplaza;
 				PROVISIONING_PROFILE = "";
