@@ -12,6 +12,7 @@ module.exports.colors = {
   white: '#FFFFFF',
   lightGray: '#EAEAEA',
   darkGray: '#979797',
+  green: '#4AE28F',
   sDarkBrown: '#423535',
   darkerPink: '#A35E5E'
 };

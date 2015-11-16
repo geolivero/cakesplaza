@@ -5,6 +5,7 @@ var DEFCSS = require('./../Styles/Default');
 var Helpers = require('./../Helpers');
 var Settings = require('./../../Settings');
 var { Icon, } = require('react-native-icons');
+var Mail = require('./../Components/Forms/Mail');
 //var FacebookLoginManager = require('NativeModules').FacebookLoginManager;
 
 var {
@@ -24,12 +25,15 @@ module.exports = React.createClass({
 
   getInitialState: function () {
     return {
-      result: ''
+      result: '',
+      parentScale: new Animated.Value(1),
+      startViewOpacity: new Animated.Value(1)
     };
   },
 
 
   componentDidMount: function () {
+
   },
 
   onBack() {
@@ -49,47 +53,117 @@ module.exports = React.createClass({
     });*/
   },
 
+  getStepContainer() {
+    return StyleSheet.create({
+      bringBack: {
+        transform: [{
+          scale: this.state.parentScale
+        }]
+      }
+    });
+  },
+
+  animateBackContainer() {
+
+    Animated.timing( 
+      this.state.parentScale,
+      {
+        toValue: 0.8
+      },
+    ).start(); 
+
+    Animated.timing( 
+      this.state.startViewOpacity,
+      {
+        toValue: 0.3
+      },
+    ).start();
+  },
+
+  signUpWithEmail() {
+    this.animateBackContainer();
+    this.setState({
+      isEmail: true
+    });
+  },
+
+  cancelRegister() {
+    Animated.timing( 
+      this.state.parentScale,
+      {
+        toValue: 1
+      },
+    ).start(); 
+
+    Animated.timing( 
+      this.state.startViewOpacity,
+      {
+        toValue: 1
+      },
+    ).start();
+
+    this.setState({
+      isEmail: false
+    });
+  },
+
+  getForm() {
+    if (this.state.isEmail) {
+      return(
+        <Mail onUserClose={ this.cancelRegister } />
+      );
+    }
+    return null;
+  },
+
   render() {
     return (
-      <View style={[styles.container]}>
+      <View style={styles.preContainer}>
+        <Animated.View style={[
+          styles.container, 
+          this.getStepContainer().bringBack, 
+          { opacity: this.state.startViewOpacity }
+          ]}>
 
-        <View style={[styles.content]}>
-        <Image source={require('image!logo_small')} />
-        <Text style={[styles.title, DEFCSS.sansc]}>START HIER</Text>
-        <Text style={[styles.subTitle, DEFCSS.sans]}>Connect jouw account met facebook</Text>
-          <TouchableOpacity onPress={this.fbConnect}>
-            <View style={[styles.btnfb]}>
+          <View style={[styles.content]}>
+          <Image source={require('image!logo_small')} />
+          <Text style={[styles.title, DEFCSS.sansc]}>START HIER</Text>
+          <Text style={[styles.subTitle, DEFCSS.sans]}>Connect jouw account met facebook</Text>
+            <TouchableOpacity onPress={this.fbConnect}>
+              <View style={[styles.btnfb]}>
+                <Icon
+                  name='fontawesome|facebook'
+                  size={22}
+                  color={Settings.colors.white}
+                  style={[styles.fb]} />
+                <Text style={[DEFCSS.sansc, styles.fbText]}>CONNECT MET FACEBOOK</Text>
+              </View>
+            </TouchableOpacity>
+            <Text style={[styles.subTitle, DEFCSS.sans, { marginTop: 4 }]}>of met e-mail</Text>
+            <TouchableOpacity onPress={this.signUpWithEmail}>
+              <View style={[styles.btnfb, styles.btnEm]}>
+                <Icon
+                  name='fontawesome|envelope'
+                  size={22}
+                  color={Settings.colors.darkBrown}
+                  style={[styles.em]} />
+                <Text style={[DEFCSS.sansc, styles.fbText, styles.emTxt]}>CONNECT MET EMAIL</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+          
+          <View style={styles.arrowBtnBack}>
+            <TouchableOpacity onPress={this.onBack}>
               <Icon
-                name='fontawesome|facebook'
-                size={22}
-                color={Settings.colors.white}
-                style={[styles.fb]} />
-              <Text style={[DEFCSS.sansc, styles.fbText]}>CONNECT MET FACEBOOK</Text>
-            </View>
-          </TouchableOpacity>
-          <Text style={[styles.subTitle, DEFCSS.sans, { marginTop: 4 }]}>of met e-mail</Text>
-          <TouchableOpacity>
-            <View style={[styles.btnfb, styles.btnEm]}>
-              <Icon
-                name='fontawesome|envelope'
+                name='fontawesome|angle-left'
                 size={22}
                 color={Settings.colors.darkBrown}
-                style={[styles.em]} />
-              <Text style={[DEFCSS.sansc, styles.fbText, styles.emTxt]}>CONNECT MET EMAIL</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-        
-        <View style={styles.arrowBtnBack}>
-          <TouchableOpacity onPress={this.onBack}>
-            <Icon
-              name='fontawesome|angle-left'
-              size={22}
-              color={Settings.colors.darkBrown}
-              style={[styles.buttons]} />
-          </TouchableOpacity>
-        </View>
-        
+                style={[styles.buttons]} />
+            </TouchableOpacity>
+          </View>
+          
+        </Animated.View>
+        { this.getForm() }
       </View>
     );
   }
@@ -106,6 +180,10 @@ var styles = StyleSheet.create({
   buttons: {
     width: 30,
     height: 30
+  },
+  preContainer: {
+    flex: 1,
+    backgroundColor: Settings.colors.darkBrown
   },
   container: {
     flex: 1,
