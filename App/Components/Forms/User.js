@@ -5,8 +5,9 @@ import DEFCSS from './../../Styles/Default';
 import Helpers from './../../Helpers';
 import Settings from './../../../Settings';
 import { Icon, } from 'react-native-icons';
-import TxtInput from './../Forms/TxtInput';
+import TxtInput from './../Forms/Fields/TxtInput';
 import Messages from './../Widgets/Message';
+
 
 var {
   View,
@@ -22,7 +23,7 @@ var {
 } = React;
 
 
-export default class Mail extends React.Component {
+export default class User extends React.Component {
 
   constructor(props) {
     super(props);
@@ -40,6 +41,10 @@ export default class Mail extends React.Component {
         toValue: 0
       },
     ).start();
+
+    Helpers.getToken((csrf) => {
+      console.log(csrf);
+    });
   }
 
 
@@ -61,6 +66,10 @@ export default class Mail extends React.Component {
   }
 
   onOk() {
+    this.props.model.set({
+      mail: this.state.emailText
+    });
+
     this.setState({
       showMessage: false
     });
@@ -96,6 +105,7 @@ export default class Mail extends React.Component {
                 validated: e.validated
               });
             }}
+            value={this.props.model.get('mail')}
             placeholder={'Vul je email adres'}/>
 
           <TouchableOpacity onPress={() => { this.next(); }}>

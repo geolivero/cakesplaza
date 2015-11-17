@@ -5,7 +5,8 @@ var DEFCSS = require('./../Styles/Default');
 var Helpers = require('./../Helpers');
 var Settings = require('./../../Settings');
 var { Icon, } = require('react-native-icons');
-var Mail = require('./../Components/Forms/Mail');
+var User = require('./../Components/Forms/User');
+var UserModel = require('./../Models/User');
 //var FacebookLoginManager = require('NativeModules').FacebookLoginManager;
 
 var {
@@ -24,6 +25,9 @@ var {
 module.exports = React.createClass({
 
   getInitialState: function () {
+
+    this.model = new UserModel.model();
+
     return {
       result: '',
       parentScale: new Animated.Value(1),
@@ -110,7 +114,7 @@ module.exports = React.createClass({
   getForm() {
     if (this.state.isEmail) {
       return(
-        <Mail onUserClose={ this.cancelRegister } />
+        <User model={this.model} onUserClose={ this.cancelRegister } />
       );
     }
     return null;
